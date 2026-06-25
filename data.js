@@ -41,7 +41,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-4vrfDILnjk1Wmuw",
@@ -81,10 +82,11 @@ const DATA = {
       "linkedin": "https://www.linkedin.com/in/minchai-kwak/",
       "team_name": "",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: solution is generic one-liner only",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-pDv4qCOgTfYIFzu",
@@ -140,7 +142,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-uHBnTgJ4EXqUy15",
@@ -180,7 +183,7 @@ const DATA = {
       "linkedin": "https://www.linkedin.com/in/mainhatduy/",
       "team_name": "DiffusPeak",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: solution=\"diffúion model\", innovation=\"New model\", impact=\"fast\"",
       "members": [
         {
           "num": "1 (Lead)",
@@ -220,7 +223,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-2JC3kT6y17nafA3",
@@ -263,7 +267,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-JAaxKz9nqqr64Sl",
@@ -331,7 +336,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-gvMCqkkBNgGkQV6",
@@ -423,7 +429,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Yp7drZEZK8FIBag",
@@ -491,7 +498,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-CYTclz5Apm37QlZ",
@@ -534,7 +542,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-jhnMv0ExBXQBBdh",
@@ -602,7 +611,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-vUZFQtraUlWa1dV",
@@ -670,7 +680,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-bCL0KYwVf0dEeEu",
@@ -750,7 +761,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-rDplyE1KqN26jQS",
@@ -818,7 +830,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-BiDdHPQmt0EsUg1",
@@ -861,7 +874,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-JAkPlKN3W0h6KtX",
@@ -977,7 +991,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-yqVjeAHfgyme72k",
@@ -1033,7 +1048,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-AtS6vJNYC6honPw",
@@ -1209,7 +1225,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-8v44HNqKPqhhzri",
@@ -1301,7 +1318,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-OAFoHSMJp9CGGDS",
@@ -1344,7 +1362,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-hZ8eeQ8jV6yaZkr",
@@ -1460,7 +1479,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-wEhna2udNLWx7gr",
@@ -1528,7 +1548,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-CIRQRkCGAH99HUN",
@@ -1620,7 +1641,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Gju3GAMTkkcGKKA",
@@ -1712,7 +1734,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-676YqXUQWFGI716",
@@ -1780,7 +1803,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-EtU0EGFtqdzgKjd",
@@ -1896,7 +1920,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-1IvoGFgQz6bXUgM",
@@ -2000,7 +2025,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-0fODDAdTVroIAH4",
@@ -2080,7 +2106,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-m67AICDZs2pMa8J",
@@ -2123,7 +2150,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-XtKFUYtOOhTlu7j",
@@ -2166,7 +2194,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-z59ZeeAdfHeE5j6",
@@ -2206,7 +2235,7 @@ const DATA = {
       "linkedin": "",
       "team_name": "Cheetah",
       "status": "Good",
-      "notes": "Type corrected: 'Individual' -> 'Team' (basis: Luma member count (2))",
+      "notes": "Type corrected: 'Individual' -> 'Team' (basis: Luma member count (2)) | Thin content: impact=\"Mass Production\" (2 words)",
       "members": [
         {
           "num": "1 (Lead)",
@@ -2234,7 +2263,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-P2UjlQCmVSMtSjG",
@@ -2350,7 +2380,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-nNjuzBt7SaxupK3",
@@ -2466,7 +2497,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-jlNY9HUeAL1p2yH",
@@ -2509,7 +2541,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-JCuDE2CzNIsTqsy",
@@ -2565,7 +2598,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-t21BSaDALrH5EC3",
@@ -2681,7 +2715,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-LKbcXXy26qmlDVo",
@@ -2785,7 +2820,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-hxKH0Bt3xEIKQ0W",
@@ -2828,7 +2864,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-hW7nBaOTSi2YBae",
@@ -2932,7 +2969,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-BhiWx1zq2HhEwXT",
@@ -3036,7 +3074,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-qiASlJuqYYvruGH",
@@ -3152,7 +3191,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-fS1ZbhaHaZiyzIX",
@@ -3195,7 +3235,8 @@ const DATA = {
       "notes": "Non-GSheets link submitted: https://acesse.one/flfd6sf",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-myYKQP13kpamX9p",
@@ -3275,7 +3316,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Pf7tgc2fnW3H74k",
@@ -3318,7 +3360,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-RvebxAS8Weky6QD",
@@ -3410,7 +3453,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-fqdGHBiNZbnpt1m",
@@ -3502,7 +3546,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-BB5ndKYoPqbJBuz",
@@ -3582,7 +3627,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-fGBWPa1P7G9xwnW",
@@ -3650,7 +3696,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-bp3oDIHfSLTZK5v",
@@ -3766,7 +3813,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-GDfvSIN3wmFYFar",
@@ -3809,7 +3857,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-D9hBFX3QxlqT2Np",
@@ -3889,7 +3938,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-8v8jZt6I07Hqfnc",
@@ -3945,7 +3995,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-VboJW0qmSGcym1A",
@@ -4013,7 +4064,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-IZE4GHBiEr35ddQ",
@@ -4093,7 +4145,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-KmtQhSVlGJingZ6",
@@ -4137,10 +4190,11 @@ const DATA = {
       "linkedin": "",
       "team_name": "",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: 3 fields = \"TBD\"",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-HbvaFzbcWKqxGQF",
@@ -4208,7 +4262,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-vZ3XCPD1ycO9mD7",
@@ -4300,7 +4355,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-BNpD94jd33ETZZg",
@@ -4452,7 +4508,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-heGfgkGuBNqSVAo",
@@ -4532,7 +4589,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-oRPG5bh7U7z9xyE",
@@ -4624,7 +4682,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-kniWQENE5ZS1MEA",
@@ -4666,7 +4725,7 @@ const DATA = {
       "linkedin": "",
       "team_name": "Siuuu",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: technical blank, other fields very brief",
       "members": [
         {
           "num": "1 (Lead)",
@@ -4766,7 +4825,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-7EvvDwvKJi88IIU",
@@ -4858,7 +4918,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-xiwttiXDWiIxVK0",
@@ -4950,7 +5011,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-lp0M8VprNxsODeo",
@@ -5042,7 +5104,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-VOa7YgTmNnI6Vlm",
@@ -5134,7 +5197,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-45WsPqja76Rv2uQ",
@@ -5202,7 +5266,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-xR9VAxvox4qskEj",
@@ -5245,7 +5310,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Q7pwNBddePxcVLd",
@@ -5288,7 +5354,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-XwywTCzRhVGdG3j",
@@ -5392,7 +5459,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-mDI11FADbFMZeCn",
@@ -5472,7 +5540,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Y8VcVYw6le14o5Y",
@@ -5540,7 +5609,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-HbCnGEpVAc2ABfO",
@@ -5632,7 +5702,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-p9BiOANF6u3ASQv",
@@ -5700,7 +5771,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-vOFgdshWTA2upXX",
@@ -5780,7 +5852,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-VwhUwGEiO7xnXu9",
@@ -5823,7 +5896,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Bu2Dj7t87ULXlsU",
@@ -5939,7 +6013,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-ZP1mkgyx2xeBTAm",
@@ -6067,7 +6142,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-KGWeGeyVHjaCdDE",
@@ -6183,7 +6259,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-Y6VeSHsAkRDEWfD",
@@ -6263,7 +6340,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-NbXO1WQ6HZCAvhl",
@@ -6331,7 +6409,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-rBYMsutnGyBko48",
@@ -6423,7 +6502,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-DiVZFdiJu09fFBy",
@@ -6503,7 +6583,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-B75JA9sGRfQ2Cwj",
@@ -6546,7 +6627,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-4OmjPpry1p72DaH",
@@ -6638,7 +6720,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-g0wnqwC8fSzoHxE",
@@ -6754,7 +6837,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-vBSn4eZghIfgb3G",
@@ -6834,7 +6918,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-PQVOSPDJiXAGYW8",
@@ -6914,7 +6999,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-OgBZTUK05eCGJga",
@@ -6957,7 +7043,8 @@ const DATA = {
       "notes": "Non-GSheets link submitted: https://autowork.com.vn/portfolio",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-yXQOKAZJ2idmldV",
@@ -7037,7 +7124,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-SCI4mXjV1vi8hwp",
@@ -7079,10 +7167,11 @@ const DATA = {
       "linkedin": "",
       "team_name": "",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: impact=\"A real-world solution to real-world problem\" (circular)",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-YjxhYoVREJ7iPqO",
@@ -7222,7 +7311,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-6DViCfdTc8NyEsL",
@@ -7314,7 +7404,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-CdxxqWH7G2PAmNQ",
@@ -7423,7 +7514,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-JpGDw3lERpQP40m",
@@ -7463,7 +7555,7 @@ const DATA = {
       "linkedin": "",
       "team_name": "Airpod",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: innovation=\"Maybe\", technical=\"Need more time!!!\"",
       "members": [
         {
           "num": "1 (Lead)",
@@ -7491,7 +7583,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-NUXzGs0WUTXaK58",
@@ -7655,7 +7748,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-uOgWVc1jzzm5T8F",
@@ -7819,7 +7913,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-ohuxpoDZRTvHire",
@@ -7859,7 +7954,7 @@ const DATA = {
       "linkedin": "https://www.linkedin.com/in/makjovi/",
       "team_name": "Atalamo",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: technical=\"Fullstack\" (1 word)",
       "members": [
         {
           "num": "1 (Lead)",
@@ -7887,7 +7982,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-DXwk7Nf89QGMFpF",
@@ -7930,7 +8026,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-cw4tfFL1k4cRP4U",
@@ -8046,7 +8143,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-LB8i9Pqgk8tH9cw",
@@ -8086,7 +8184,7 @@ const DATA = {
       "linkedin": "https://www.linkedin.com/in/bik-huy/",
       "team_name": "Rocket",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: 3 evaluation fields very brief, no technical depth",
       "members": [
         {
           "num": "1 (Lead)",
@@ -8138,7 +8236,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-1U424fb7fKpk44Q",
@@ -8181,7 +8280,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-pTMDGpub1ykFXja",
@@ -8321,7 +8421,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-LuPsBVvCbOV35XR",
@@ -8361,10 +8462,11 @@ const DATA = {
       "linkedin": "",
       "team_name": "",
       "status": "Good",
-      "notes": "Type corrected: 'Individual' -> 'Team' (basis: Luma member count (2))",
+      "notes": "Type corrected: 'Individual' -> 'Team' (basis: Luma member count (2)) | Thin content: technical=\"QWEN\" (1 word), solution/impact identical",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-uBFIl5wXLEZL86D",
@@ -8404,7 +8506,7 @@ const DATA = {
       "linkedin": "",
       "team_name": "AISpeech",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: solution=\"Finetune Whisper model\", impact=\"real-time application\"",
       "members": [
         {
           "num": "1 (Lead)",
@@ -8444,7 +8546,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-LDplc6BKE0udGBr",
@@ -8487,7 +8590,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-LZQLUD8mBlPfOGe",
@@ -8555,7 +8659,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-drrI0WiGDnHEaEF",
@@ -8597,7 +8702,7 @@ const DATA = {
       "linkedin": "https://www.linkedin.com/in/tuan-kiet-huynh-cao-a11082244",
       "team_name": "CowIsLA",
       "status": "Good",
-      "notes": "",
+      "notes": "Thin content: technical=\"AI Model\", impact=\"To create a realtime solution.\"",
       "members": [
         {
           "num": "1 (Lead)",
@@ -8625,7 +8730,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": true
     },
     {
       "id": "gst-QEcMA90EZi4LOxk",
@@ -8668,7 +8774,8 @@ const DATA = {
       "notes": "Non-GSheets link submitted: https://drive.google.com/file/d/1S8D2Mz69KKmYWaFNfZiAeNrHGGn6QUiK/view?usp=share_link",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-eXSc1f0Lb8s5cnh",
@@ -8711,7 +8818,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-hii2zfN98i0qYwR",
@@ -8754,7 +8862,8 @@ const DATA = {
       "notes": "Was in Errors (non-GSheets link): https://1drv.ms/x/c/7478844411341364/IQBPX1zdt_z5QZgCtA5cl5ZpAXwx-5RV7A6xLouYZWG6Iek?e=46jvDh",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-tW4n8F33BCejni7",
@@ -8797,7 +8906,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-74vjjR370h6jCLg",
@@ -8853,7 +8963,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-080FhHiZm3EHSCe",
@@ -8921,7 +9032,8 @@ const DATA = {
         }
       ],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-DvXxeiaW1aAUy2N",
@@ -8964,7 +9076,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     },
     {
       "id": "gst-W13ZzgT9MycvnHT",
@@ -9007,7 +9120,8 @@ const DATA = {
       "notes": "",
       "members": [],
       "advanced": false,
-      "judge_notes": ""
+      "judge_notes": "",
+      "thin_content": false
     }
   ],
   "demographics": {
@@ -9145,6 +9259,7 @@ const DATA = {
       "expertise": 332,
       "years_exp": 217,
       "note": "Coverage < 356 means some participants left that field blank in their template"
-    }
+    },
+    "last_updated": "Jun 25, 2026 03:44 (Luma export)"
   }
 };
