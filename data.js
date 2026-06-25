@@ -8910,8 +8910,8 @@ const DATA = {
     "status_good": 111,
     "status_blank": 3,
     "countries": {
-      "Vietnam": 331,
-      "Singapore": 7,
+      "Vietnam": 314,
+      "Singapore": 6,
       "Indonesia": 5,
       "Australia": 2,
       "UK": 1,
@@ -8919,43 +8919,43 @@ const DATA = {
       "India": 1
     },
     "roles": {
-      "Student": 154,
-      "Engineer/Developer": 134,
-      "Other": 92,
-      "Researcher": 25,
-      "Founder/Executive": 9,
+      "Student": 143,
+      "Engineer/Developer": 126,
+      "Other": 33,
+      "Researcher": 23,
+      "Founder/Executive": 7,
       "Designer": 5,
       "Lecturer/Academic": 3,
       "Product/Manager": 2
     },
     "experience": {
-      "No exp yet": 23,
-      "1–3 years": 153,
-      "3–5 years": 20,
-      "5–10 years": 9,
-      "10+ years": 15
+      "No exp yet": 17,
+      "1–3 years": 148,
+      "3–5 years": 17,
+      "5–10 years": 6,
+      "10+ years": 13
     },
     "orgs": {
-      "HCMUS": 52,
+      "HCMUS": 49,
       "UIT": 32,
-      "HCMUT": 31,
+      "HCMUT": 30,
       "HUST": 14,
-      "UTC": 9,
       "FPT": 9,
       "VNG Group": 9,
-      "NUS": 6,
+      "UTC": 8,
       "Apple Dev Academy": 6,
+      "NUS": 5,
       "PTIT": 4
     },
     "expertise": {
-      "Other AI/Tech": 122,
-      "NLP/Speech/LLM": 95,
-      "AI/ML": 73,
-      "Edge/Hardware": 39,
-      "Product/UX": 28,
+      "Other AI/Tech": 117,
+      "NLP/Speech/LLM": 92,
+      "AI/ML": 68,
+      "Edge/Hardware": 34,
       "Data/Analytics": 27,
-      "Software/Cloud": 20,
-      "Computer Vision": 17
+      "Product/UX": 25,
+      "Computer Vision": 17,
+      "Software/Cloud": 17
     },
     "team_sizes": {
       "2": 19,
@@ -8995,14 +8995,14 @@ const DATA = {
     },
     "cities": {
       "Vietnam": {
-        "Ho Chi Minh City": 216,
-        "Hanoi": 78,
-        "Unspecified": 26,
+        "Ho Chi Minh City": 208,
+        "Hanoi": 74,
+        "Unspecified": 22,
         "Da Nang": 8,
-        "Bac Ninh": 3
+        "Bac Ninh": 2
       },
       "Singapore": {
-        "Singapore": 7
+        "Singapore": 6
       },
       "UK": {
         "Belfast": 1
@@ -9023,6 +9023,16 @@ const DATA = {
         "Melbourne": 2
       }
     },
-    "total_located": 348
+    "total_located": 330,
+    "coverage": {
+      "total": 356,
+      "full_name": 354,
+      "location": 342,
+      "organization": 254,
+      "role": 342,
+      "expertise": 332,
+      "years_exp": 217,
+      "note": "Coverage < 356 means some participants left that field blank in their template"
+    }
   }
 };
