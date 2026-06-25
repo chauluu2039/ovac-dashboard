@@ -8910,12 +8910,12 @@ const DATA = {
     "status_good": 111,
     "status_blank": 3,
     "countries": {
-      "Vietnam": 322,
-      "Other": 101,
+      "Vietnam": 331,
       "Singapore": 7,
       "Indonesia": 5,
       "Australia": 2,
       "UK": 1,
+      "USA": 1,
       "India": 1
     },
     "roles": {
@@ -8992,6 +8992,37 @@ const DATA = {
       "2026-06-23": 16,
       "2026-06-24": 61,
       "2026-06-25": 2
-    }
+    },
+    "cities": {
+      "Vietnam": {
+        "Ho Chi Minh City": 216,
+        "Hanoi": 78,
+        "Unspecified": 26,
+        "Da Nang": 8,
+        "Bac Ninh": 3
+      },
+      "Singapore": {
+        "Singapore": 7
+      },
+      "UK": {
+        "Belfast": 1
+      },
+      "USA": {
+        "Santa Clara": 1
+      },
+      "India": {
+        "Bangalore": 1
+      },
+      "Indonesia": {
+        "Medan": 2,
+        "Bandung": 1,
+        "Tangerang": 1,
+        "Bali": 1
+      },
+      "Australia": {
+        "Melbourne": 2
+      }
+    },
+    "total_located": 348
   }
 };
