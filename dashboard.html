@@ -400,7 +400,7 @@ let currentRegId = null;
 const judgeData = {};
 
 // ── Init ──────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   const D = DATA.demographics;
   document.getElementById('m-total').textContent = D.total;
   document.getElementById('m-participants').textContent = '~' + D.est_participants;
@@ -418,8 +418,11 @@ window.addEventListener('DOMContentLoaded', () => {
     buildBarList('city-bars', D.cities['Vietnam']);
   }
 
-  buildTeamSizeChart();
-  buildTrendChart();
+  // Small delay ensures canvas containers have rendered dimensions
+  setTimeout(() => {
+    buildTeamSizeChart();
+    buildTrendChart();
+  }, 50);
   renderRegistrations();
   renderIncomplete();
   updateBadges();
@@ -442,7 +445,9 @@ function buildTeamSizeChart() {
   const ts = DATA.demographics.team_sizes;
   const labels = Object.keys(ts);
   const vals = Object.values(ts);
-  new Chart(document.getElementById('teamSizeChart'), {
+  const tsCanvas = document.getElementById('teamSizeChart');
+  if (!tsCanvas) return;
+  new Chart(tsCanvas, {
     type: 'bar',
     data: { labels, datasets: [{ data: vals, backgroundColor: '#1d9e75', borderRadius: 3 }] },
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
@@ -455,7 +460,9 @@ function buildTrendChart() {
   const rd = DATA.demographics.reg_by_date;
   const labels = Object.keys(rd).map(d => d.slice(5));
   const vals = Object.values(rd);
-  new Chart(document.getElementById('trendChart'), {
+  const tCanvas = document.getElementById('trendChart');
+  if (!tCanvas) return;
+  new Chart(tCanvas, {
     type: 'line',
     data: { labels, datasets: [{ data: vals, borderColor: '#e05a1e', backgroundColor: 'rgba(224,90,30,.08)', fill: true, tension: 0.3, pointRadius: 3, pointBackgroundColor: '#e05a1e' }] },
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
@@ -669,6 +676,7 @@ function showPage(id) {
   document.querySelector(`.nav-item[onclick="showPage('${id}')"]`).classList.add('active');
   document.getElementById('page-title').textContent = pageTitles[id] || id;
   if (id === 'registrations') renderRegistrations();
+  if (id === 'incomplete') renderIncomplete();
   if (id === 'advanced') renderAdvanced();
 }
 
