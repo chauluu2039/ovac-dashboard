@@ -218,7 +218,42 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
             <button class="filter-btn" onclick="setFilter('incomplete',this)">Has blanks</button>
             <button class="filter-btn" onclick="setFilter('thin',this)">Thin content</button>
             <span class="filter-count" id="filter-count" style="margin-left:8px"></span>
-            <button class="btn btn-secondary" onclick="exportCSV()" style="margin-left:auto">Export CSV</button>
+            <div style="margin-left:auto;display:flex;gap:6px;align-items:center">
+              <span id="bulk-col-wrap" style="display:none;gap:6px;align-items:center">
+                <span style="font-size:11px;color:var(--text3)">Checkbox:</span>
+                <button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="bulkCheck(true)">&#10003; Check all</button>
+                <button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="bulkCheck(false)">&#9633; Uncheck all</button>
+              </span>
+              <span style="display:flex;gap:6px;align-items:center">
+                <span style="font-size:11px;color:var(--text3)">Mass set:</span>
+                <select id="bulk-status-val" style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:5px;background:var(--surface);color:var(--text)">
+                  <option value="">&#8212; Status &#8212;</option>
+                  <option value="Pending Review">Pending Review</option>
+                  <option value="Under Review">Under Review</option>
+                  <option value="Shortlisted">Shortlisted</option>
+                  <option value="Advanced - Round 2">Advanced - Round 2</option>
+                  <option value="Advanced - Finals">Advanced - Finals</option>
+                  <option value="Winner">Winner</option>
+                  <option value="Rejected">Rejected</option>
+                  <option value="Withdrawn">Withdrawn</option>
+                  <option value="Need Follow Up">Need Follow Up</option>
+                </select>
+                <button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="massSetStatus()">Apply to visible</button>
+              </span>
+              <span style="display:flex;gap:6px;align-items:center">
+                <select id="bulk-phase-val" style="font-size:11px;padding:3px 6px;border:1px solid var(--border);border-radius:5px;background:var(--surface);color:var(--text)">
+                  <option value="">&#8212; Phase &#8212;</option>
+                  <option value="Phase 1 - Registration">Phase 1 - Registration</option>
+                  <option value="Phase 1 - Review">Phase 1 - Review</option>
+                  <option value="Phase 2 - Technical Submission">Phase 2 - Technical Submission</option>
+                  <option value="Phase 2 - Review">Phase 2 - Review</option>
+                  <option value="Phase 3 - Finals">Phase 3 - Finals</option>
+                  <option value="Phase 3 - Demo Day">Phase 3 - Demo Day</option>
+                </select>
+                <button class="btn btn-secondary" style="font-size:11px;padding:4px 10px" onclick="massSetPhase()">Apply to visible</button>
+              </span>
+              <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
+            </div>
           </div>
           <div style="overflow-x:auto"><table><thead><tr id="reg-thead"></tr></thead><tbody id="reg-tbody"></tbody></table></div>
         </div>
@@ -324,7 +359,7 @@ var SUPA_URL = "https://phgpdwiaccgalevbockn.supabase.co";
 var SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoZ3Bkd2lhY2NnYWxldmJvY2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNzcxMzMsImV4cCI6MjA5Nzk1MzEzM30.17hR_N7iP7_CAH5vzwP5SRBFoxTbqO-lbr3lbVySwwY";
 var db = supabase.createClient(SUPA_URL, SUPA_KEY);
 
-var curFilter = "all", curSearch = "", curRegId = null;
+var curFilter = "all", curSearch = "", curRegId = null, sortCol = null, sortDir = 1;
 var custData = {}, custCols = [], isDirty = false, apexT = null;
 
 function esc(s) {
@@ -478,11 +513,132 @@ function buildTrend() {
   apexT.render();
 }
 
+function sortBy(col) {
+  if (sortCol === col) { sortDir = -sortDir; }
+  else { sortCol = col; sortDir = 1; }
+  renderRegs();
+}
+
+function getSortedFiltered() {
+  var rows = getFiltered();
+  if (!sortCol) return rows;
+  return rows.slice().sort(function(a, b) {
+    var ca = getCust(a.email), cb = getCust(b.email);
+    var va, vb;
+    if (sortCol === "name")    { va = a.luma_name||""; vb = b.luma_name||""; }
+    else if (sortCol === "type")   { va = a.final_type||""; vb = b.final_type||""; }
+    else if (sortCol === "status") { va = ca.status||""; vb = cb.status||""; }
+    else if (sortCol === "phase")  { va = ca.phase_tag||""; vb = cb.phase_tag||""; }
+    else if (sortCol === "date")   { va = a.registered_at||""; vb = b.registered_at||""; }
+    else if (sortCol === "blanks") { va = a.blank_fields.length; vb = b.blank_fields.length; }
+    else if (sortCol === "members"){ va = parseInt(a.luma_members)||0; vb = parseInt(b.luma_members)||0; }
+    else { va = ""; vb = ""; }
+    if (typeof va === "number") return (va - vb) * sortDir;
+    return va.localeCompare(vb) * sortDir;
+  });
+}
+
+function sortIcon(col) {
+  if (sortCol !== col) return " <span style=\"opacity:.3;font-size:9px\">&#8597;</span>";
+  return sortDir === 1 ? " <span style=\"font-size:9px\">&#9650;</span>" : " <span style=\"font-size:9px\">&#9660;</span>";
+}
+
+async function massSet(field, value) {
+  if (!value) { alert("Please select a " + field + " value first."); return; }
+  var rows = getSortedFiltered();
+  if (!confirm("Set " + field + " to \"" + value + "\" for all " + rows.length + " visible registrants?")) return;
+  setSyncStatus("syncing");
+  var errors = 0;
+  for (var i = 0; i < rows.length; i++) {
+    var r = rows[i];
+    var c = getCust(r.email);
+    var payload = {
+      email: r.email,
+      status: field === "status" ? value : (c.status || "Pending Review"),
+      phase_tag: field === "phase" ? value : (c.phase_tag || ""),
+      judge_notes: c.judge_notes || "",
+      custom_cols: c.custom_cols || {},
+      updated_at: new Date().toISOString()
+    };
+    try {
+      var res = await db.from("registrant_custom").upsert(payload, {onConflict: "email"});
+      if (res.error) throw res.error;
+      custData[r.email] = payload;
+    } catch(e) { errors++; console.error(e); }
+  }
+  setSyncStatus(errors > 0 ? "error" : "ok");
+  renderRegs();
+  renderAdv();
+  updateAdvBadge();
+  // Reset the dropdown
+  document.getElementById(field === "status" ? "bulk-status-val" : "bulk-phase-val").value = "";
+  if (errors > 0) alert(errors + " rows failed to update.");
+  else alert("Done! Updated " + rows.length + " registrants.");
+}
+
+function massSetStatus() { massSet("status", document.getElementById("bulk-status-val").value); }
+function massSetPhase()  { massSet("phase",  document.getElementById("bulk-phase-val").value); }
+
+async function bulkCheck(checked) {
+  var rows = getFiltered();
+  var activeCols = custCols.filter(function(c){return c.col_type==="checkbox";});
+  if (activeCols.length === 0) { alert("No checkbox columns to update."); return; }
+  // If multiple checkbox cols, use the first one — or the one matching current sort
+  var targetCol = activeCols[0];
+  if (activeCols.length > 1) {
+    var names = activeCols.map(function(c,i){return (i+1)+". "+c.col_label;}).join("\n");
+    var choice = prompt("Which column to bulk update?\n"+names+"\n\nEnter number:");
+    if (!choice) return;
+    targetCol = activeCols[parseInt(choice)-1] || activeCols[0];
+  }
+  if (!confirm((checked?"Check":"Uncheck")+" all "+rows.length+" visible registrants for \""+targetCol.col_label+"\"?")) return;
+  setSyncStatus("syncing");
+  var errors = 0;
+  for (var i=0; i<rows.length; i++) {
+    var r = rows[i];
+    var c = getCust(r.email);
+    var cols = Object.assign({}, c.custom_cols||{});
+    cols[targetCol.col_key] = checked;
+    var payload = {email:r.email, status:c.status||"Pending Review",
+      phase_tag:c.phase_tag||"", judge_notes:c.judge_notes||"",
+      custom_cols:cols, updated_at:new Date().toISOString()};
+    try {
+      var res = await db.from("registrant_custom").upsert(payload,{onConflict:"email"});
+      if (res.error) throw res.error;
+      custData[r.email] = payload;
+    } catch(e) { errors++; console.error(e); }
+  }
+  setSyncStatus(errors > 0 ? "error" : "ok");
+  renderRegs();
+  if (errors > 0) alert(errors+" rows failed to update.");
+}
+
 function renderRegHead() {
   var thead=document.getElementById("reg-thead"); if (!thead) return;
-  var h="<th>#</th><th>Name</th><th>Email</th><th>Project / Team</th><th>Type</th><th>Members</th><th>Status</th><th>Phase</th><th>Blanks</th><th>Content</th>";
-  h+=custCols.map(function(col){return "<th>"+esc(col.col_label)+"</th>";}).join("");
-  thead.innerHTML=h;
+  function sh(label, col) {
+    return "<th style=\"cursor:pointer;user-select:none\" onclick=\"sortBy('"+col+"')\">"+label+sortIcon(col)+"</th>";
+  }
+  var h = "<th>#</th>"
+    + sh("Name","name")
+    + "<th>Email</th>"
+    + "<th>Project / Team</th>"
+    + sh("Type","type")
+    + sh("Members","members")
+    + sh("Status","status")
+    + sh("Phase","phase")
+    + sh("Blanks","blanks")
+    + "<th>Content</th>";
+  h += custCols.map(function(col){
+    if (col.col_type === "checkbox") {
+      return "<th style=\"cursor:pointer;user-select:none\" onclick=\"sortBy('"+col.col_key+"')\">"+esc(col.col_label)+sortIcon(col.col_key)+"</th>";
+    }
+    return "<th>"+esc(col.col_label)+"</th>";
+  }).join("");
+  thead.innerHTML = h;
+  // Show bulk check/uncheck if any checkbox cols exist
+  var hasCB = custCols.some(function(c){return c.col_type==="checkbox";});
+  var bw = document.getElementById("bulk-col-wrap");
+  if (bw) bw.style.display = hasCB ? "flex" : "none";
 }
 
 function getFiltered() {
@@ -508,7 +664,7 @@ function expCell(el,event){
 
 function renderRegs() {
   renderRegHead();
-  var rows=getFiltered();
+  var rows=getSortedFiltered();
   var tbody=document.getElementById("reg-tbody");
   tbody.innerHTML=rows.map(function(r,i){
     var c=getCust(r.email);
