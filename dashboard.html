@@ -7,16 +7,30 @@
 <title>OneVoice AI Challenge 2026 — Dashboard</title>
 <script>
 (function() {
-  const PW = 'OVAC-Round1', SK = 'ovac_auth';
+  var PW = 'OVAC-Round1', SK = 'ovac_auth';
   if (sessionStorage.getItem(SK) !== '1') {
     document.documentElement.style.visibility = 'hidden';
     document.addEventListener('DOMContentLoaded', function() {
       document.documentElement.style.visibility = '';
-      document.body.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f5f4f0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif"><div style="background:#fff;border:1px solid #e0ddd6;border-radius:14px;padding:40px 48px;width:100%;max-width:380px;text-align:center"><div style="width:48px;height:48px;background:#e05a1e;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><h1 style="font-size:18px;font-weight:600;color:#1a1a1a;margin-bottom:6px">OVAC 2026 Dashboard</h1><p style="font-size:13px;color:#888;margin-bottom:28px">Enter the access password to continue</p><input id="pw" type="password" placeholder="Password" autofocus style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;margin-bottom:10px;box-sizing:border-box" onkeydown="if(event.key==='Enter')chk()"/><div id="pwe" style="font-size:12px;color:#e24b4a;margin-bottom:8px;min-height:18px"></div><button onclick="chk()" style="width:100%;padding:10px;background:#e05a1e;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer">Enter Dashboard</button><p style="font-size:11px;color:#bbb;margin-top:20px">OneVoice AI Challenge · Saigon AI Hub</p></div></div>';
-      window.chk = function() {
-        if (document.getElementById('pw').value === PW) { sessionStorage.setItem(SK,'1'); location.reload(); }
-        else { document.getElementById('pwe').textContent='Incorrect password.'; document.getElementById('pw').value=''; document.getElementById('pw').focus(); }
-      };
+      var d = document.createElement('div');
+      d.style.cssText = 'min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f5f4f0;font-family:-apple-system,sans-serif';
+      d.innerHTML = '<div style="background:#fff;border:1px solid #e0ddd6;border-radius:14px;padding:40px 48px;width:100%;max-width:380px;text-align:center">'
+        + '<h1 style="font-size:18px;font-weight:600;color:#1a1a1a;margin-bottom:6px">OVAC 2026 Dashboard</h1>'
+        + '<p style="font-size:13px;color:#888;margin-bottom:28px">Enter the access password to continue</p>'
+        + '<input id="pw" type="password" placeholder="Password" autofocus style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:14px;outline:none;margin-bottom:10px;box-sizing:border-box"/>'
+        + '<div id="pwe" style="font-size:12px;color:#e24b4a;margin-bottom:8px;min-height:18px"></div>'
+        + '<button id="pwbtn" style="width:100%;padding:10px;background:#e05a1e;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer">Enter Dashboard</button>'
+        + '<p style="font-size:11px;color:#bbb;margin-top:20px">OneVoice AI Challenge · Saigon AI Hub</p>'
+        + '</div>';
+      document.body.innerHTML = '';
+      document.body.appendChild(d);
+      function chk() {
+        var val = document.getElementById('pw').value;
+        if (val === PW) { sessionStorage.setItem(SK, '1'); location.reload(); }
+        else { document.getElementById('pwe').textContent = 'Incorrect password.'; document.getElementById('pw').value = ''; }
+      }
+      document.getElementById('pwbtn').addEventListener('click', chk);
+      document.getElementById('pw').addEventListener('keydown', function(e) { if (e.key === 'Enter') chk(); });
     });
   }
 })();
@@ -28,7 +42,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f5f4f0;--surface:#fff;--surface2:#f0ede8;--border:#e0ddd6;--text:#1a1a1a;--text2:#555;--text3:#888;--accent:#e05a1e;--accent2:#f47340;--green:#1d9e75;--red:#e24b4a;--blue:#378add;--purple:#7f77dd;--yellow:#f59e0b;--sidebar:220px;--header:56px}
 [data-theme="dark"]{--bg:#111110;--surface:#1a1916;--surface2:#222120;--border:#333;--text:#e8e4dc;--text2:#aaa;--text3:#666;--accent:#f47340;--green:#1d9e75;--red:#e24b4a;--blue:#378add}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh}
 .layout{display:flex;min-height:100vh}
 .sidebar{width:var(--sidebar);background:#1a1814;color:#e8e4dc;position:fixed;top:0;left:0;height:100vh;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
 .sidebar-logo{padding:18px 20px 14px;border-bottom:1px solid #333;flex-shrink:0}
@@ -42,14 +56,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .nav-item.active svg{opacity:1}
 .nav-badge{margin-left:auto;border-radius:20px;padding:1px 7px;font-size:10px;font-weight:600}
 .sidebar-footer{padding:14px 20px;border-top:1px solid #333;font-size:11px;color:#555;flex-shrink:0}
-.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column}
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
 .topbar{height:var(--header);background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:12px;position:sticky;top:0;z-index:50}
 .topbar h2{font-size:15px;font-weight:600}
 .topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px}
 .topbar-right input{padding:6px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);color:var(--text);width:200px}
 .topbar-right input:focus{outline:none;border-color:var(--accent)}
-.icon-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 9px;cursor:pointer;color:var(--text2);font-size:14px;line-height:1;transition:all .15s}
-.icon-btn:hover{background:var(--surface2)}
+.icon-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 9px;cursor:pointer;color:var(--text2);font-size:14px;line-height:1}
 .sync-indicator{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
 .sync-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
 .sync-dot.syncing{background:var(--yellow);animation:pulse 1s infinite}
@@ -79,11 +92,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .filter-count{font-size:11px;color:var(--text3)}
 .btn{padding:6px 14px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
 .btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{opacity:.85}
 .btn-secondary{background:var(--surface2);border:1px solid var(--border);color:var(--text2)}
-.btn-secondary:hover{background:var(--border)}
 .btn-danger{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
-.btn-danger:hover{background:#fecaca}
 table{width:100%;border-collapse:collapse}
 thead th{padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;background:var(--surface2);border-bottom:1px solid var(--border);white-space:nowrap}
 tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
@@ -98,15 +108,11 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
 .badge-purple{background:#e9d5ff;color:#6b21a8}
 .badge-yellow{background:#fef9c3;color:#854d0e}
 .thin-badge{background:#fff3cd;color:#856404;border:1px solid #ffc107;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:600}
-.status-select{font-size:12px;padding:3px 6px;border:1px solid var(--border);border-radius:5px;background:var(--surface);color:var(--text);cursor:pointer}
-.status-select:focus{outline:none;border-color:var(--accent)}
-.checkbox-cell{width:32px;height:32px;display:flex;align-items:center;justify-content:center}
-.custom-checkbox{width:16px;height:16px;cursor:pointer;accent-color:var(--accent)}
-.cell-truncate{max-height:38px;overflow:hidden;position:relative;cursor:pointer}
-.cell-truncate.expanded{max-height:400px}
-.cell-truncate:not(.expanded)::after{content:'';position:absolute;bottom:0;left:0;right:0;height:14px;background:linear-gradient(transparent,var(--surface));pointer-events:none}
-.cell-truncate.expanded::after{display:none}
-.expand-btn{font-size:10px;color:var(--accent);cursor:pointer;display:block;margin-top:2px}
+.cell-trunc{max-height:38px;overflow:hidden;position:relative;cursor:pointer}
+.cell-trunc.exp{max-height:400px}
+.cell-trunc:not(.exp)::after{content:"";position:absolute;bottom:0;left:0;right:0;height:14px;background:linear-gradient(transparent,var(--surface));pointer-events:none}
+.cell-trunc.exp::after{display:none}
+.exp-btn{font-size:10px;color:var(--accent);cursor:pointer;display:block;margin-top:2px}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
 .modal-overlay.open{display:flex}
 .modal{background:var(--surface);border-radius:12px;width:100%;max-width:880px;box-shadow:0 8px 40px rgba(0,0,0,.2);overflow:hidden}
@@ -127,84 +133,68 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
 .members-table td{padding:6px 8px;border-bottom:1px solid var(--border)}
 .modal-custom{padding:16px 24px;border-top:1px solid var(--border);background:var(--surface2)}
 .modal-custom h4{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
-.custom-fields-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.custom-field{display:flex;flex-direction:column;gap:4px}
-.custom-field label{font-size:11px;color:var(--text2);font-weight:500}
-.custom-field input[type=text],.custom-field select,.custom-field textarea{padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%}
-.custom-field input[type=text]:focus,.custom-field select:focus,.custom-field textarea:focus{outline:none;border-color:var(--accent)}
-.custom-field textarea{resize:vertical;min-height:60px}
+.cf{display:flex;flex-direction:column;gap:4px}
+.cf label{font-size:11px;color:var(--text2);font-weight:500}
+.cf input,.cf select,.cf textarea{padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%}
+.cf input:focus,.cf select:focus,.cf textarea:focus{outline:none;border-color:var(--accent)}
 .modal-footer{padding:14px 24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .incomplete-list{display:flex;flex-direction:column;gap:10px}
-.incomplete-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;cursor:pointer;transition:all .15s}
-.incomplete-card:hover{border-color:var(--accent)}
+.inc-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;cursor:pointer;transition:all .15s}
+.inc-card:hover{border-color:var(--accent)}
 .missing-fields{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
 .missing-tag{font-size:11px;padding:2px 8px;background:#fff3cd;color:#856404;border-radius:20px}
 .info-strip{background:#fff8f0;border:1px solid #ffd8b0;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:12px;color:#7a4a00;display:flex;align-items:center;gap:10px}
 .footnote{padding:14px 28px;font-size:11px;color:var(--text3);border-top:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-/* Column Manager Modal */
-.col-manager{max-width:600px}
 .col-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;max-height:300px;overflow-y:auto}
 .col-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)}
 .col-item-label{flex:1;font-size:13px}
 .col-item-type{font-size:11px;color:var(--text3);padding:2px 6px;background:var(--surface);border-radius:4px}
 .col-add-form{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:end}
 .col-add-form input,.col-add-form select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--surface);color:var(--text)}
-.col-add-form input:focus,.col-add-form select:focus{outline:none;border-color:var(--accent)}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
 </style>
 </head>
 <body>
 <div class="layout">
   <aside class="sidebar">
-    <div class="sidebar-logo">
-      <h1>OneVoice AI Challenge</h1>
-      <p>2026 Admin Dashboard</p>
-    </div>
+    <div class="sidebar-logo"><h1>OneVoice AI Challenge</h1><p>2026 Admin Dashboard</p></div>
     <nav class="sidebar-nav">
       <div class="nav-item active" onclick="showPage('overview')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        Overview
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Overview
       </div>
       <div class="nav-item" onclick="showPage('registrations')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/><polyline points="17 3 17 8 12 8"/></svg>
-        All Registrations
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/><polyline points="17 3 17 8 12 8"/></svg>All Registrations
       </div>
       <div class="nav-item" onclick="showPage('incomplete')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Incomplete Forms
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Incomplete Forms
         <span id="incomplete-badge" class="nav-badge" style="background:var(--red);color:#fff;display:none">0</span>
       </div>
       <div class="nav-item" onclick="showPage('advanced')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Advanced
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Advanced
         <span id="advanced-badge" class="nav-badge" style="background:var(--green);color:#fff">0</span>
       </div>
       <div class="nav-item" onclick="showPage('columns')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        Manage Columns
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>Manage Columns
       </div>
     </nav>
     <div class="sidebar-footer" id="sidebar-footer">Loading...<br>Replace data.js to update</div>
   </aside>
-
   <main class="main">
     <div class="topbar">
       <h2 id="page-title">Overview</h2>
       <div class="topbar-right">
-        <div class="sync-indicator"><div class="sync-dot" id="sync-dot"></div><span id="sync-text">Connected</span></div>
-        <button class="icon-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle dark/light mode">🌙</button>
+        <div class="sync-indicator"><div class="sync-dot" id="sync-dot"></div><span id="sync-text">Connecting...</span></div>
+        <button class="icon-btn" onclick="toggleTheme()" id="theme-btn">&#127769;</button>
         <input type="text" id="search-input" placeholder="Search name, email, project..." oninput="onSearch(this.value)"/>
       </div>
     </div>
     <div class="content">
-
-      <!-- OVERVIEW -->
       <div class="page active" id="page-overview">
         <div class="metrics-grid">
-          <div class="metric-card"><div class="metric-val" id="m-total">—</div><div class="metric-lbl">Total registrations</div></div>
-          <div class="metric-card"><div class="metric-val" style="color:var(--green)" id="m-participants">—</div><div class="metric-lbl">Est. total participants</div><div class="metric-sub" id="m-members-sub"></div></div>
-          <div class="metric-card"><div class="metric-val" id="m-teams">—</div><div class="metric-lbl">Team entries</div><div class="metric-sub" id="m-teams-sub"></div></div>
-          <div class="metric-card"><div class="metric-val" id="m-indiv">—</div><div class="metric-lbl">Individual entries</div></div>
+          <div class="metric-card"><div class="metric-val" id="m-total">&#8212;</div><div class="metric-lbl">Total registrations</div></div>
+          <div class="metric-card"><div class="metric-val" style="color:var(--green)" id="m-participants">&#8212;</div><div class="metric-lbl">Est. total participants</div><div class="metric-sub" id="m-members-sub"></div></div>
+          <div class="metric-card"><div class="metric-val" id="m-teams">&#8212;</div><div class="metric-lbl">Team entries</div><div class="metric-sub" id="m-teams-sub"></div></div>
+          <div class="metric-card"><div class="metric-val" id="m-indiv">&#8212;</div><div class="metric-lbl">Individual entries</div></div>
         </div>
         <div class="charts-grid">
           <div class="chart-card"><h3>Team size distribution</h3><div id="teamSizeChart"></div></div>
@@ -214,13 +204,11 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
           <div class="chart-card"><h3>Years of experience</h3><div class="bar-list" id="exp-bars"></div></div>
           <div class="chart-card"><h3>Top organizations</h3><div class="bar-list" id="org-bars"></div></div>
         </div>
-        <div class="charts-grid" style="grid-template-columns:1fr 1fr">
-          <div class="chart-card"><h3>Geography — by country</h3><div class="bar-list" id="country-bars"></div></div>
-          <div class="chart-card"><h3>Geography — Vietnamese cities</h3><div class="bar-list" id="city-bars"></div></div>
+        <div class="charts-grid">
+          <div class="chart-card"><h3>Geography &#8212; by country</h3><div class="bar-list" id="country-bars"></div></div>
+          <div class="chart-card"><h3>Geography &#8212; Vietnamese cities</h3><div class="bar-list" id="city-bars"></div></div>
         </div>
       </div>
-
-      <!-- ALL REGISTRATIONS -->
       <div class="page" id="page-registrations">
         <div class="table-card">
           <div class="table-toolbar">
@@ -230,88 +218,57 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
             <button class="filter-btn" onclick="setFilter('incomplete',this)">Has blanks</button>
             <button class="filter-btn" onclick="setFilter('thin',this)">Thin content</button>
             <span class="filter-count" id="filter-count" style="margin-left:8px"></span>
-            <div style="margin-left:auto;display:flex;gap:8px">
-              <button class="btn btn-secondary" onclick="exportAdvanced()">Export Advanced CSV</button>
-            </div>
+            <button class="btn btn-secondary" onclick="exportCSV()" style="margin-left:auto">Export CSV</button>
           </div>
-          <div style="overflow-x:auto">
-            <table>
-              <thead><tr id="reg-thead"></tr></thead>
-              <tbody id="reg-tbody"></tbody>
-            </table>
-          </div>
+          <div style="overflow-x:auto"><table><thead><tr id="reg-thead"></tr></thead><tbody id="reg-tbody"></tbody></table></div>
         </div>
       </div>
-
-      <!-- INCOMPLETE -->
       <div class="page" id="page-incomplete">
-        <div class="info-strip">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Registrants with one or more required Luma form fields left blank. Click to view full details.
-        </div>
+        <div class="info-strip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Registrants with one or more required fields left blank.</div>
         <div class="incomplete-list" id="incomplete-list"></div>
       </div>
-
-      <!-- ADVANCED -->
       <div class="page" id="page-advanced">
-        <div class="info-strip">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          Registrations marked as advanced. Managed via the detail modal on each registrant.
-        </div>
+        <div class="info-strip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Registrations marked as Advanced, Shortlisted, or Winner via the detail modal.</div>
         <div class="table-card">
           <div class="table-toolbar">
             <span class="filter-count" id="advanced-count">No registrations advanced yet</span>
-            <button class="btn btn-secondary" onclick="exportAdvanced()" style="margin-left:auto">Export CSV</button>
+            <button class="btn btn-secondary" onclick="exportCSV()" style="margin-left:auto">Export CSV</button>
           </div>
-          <table>
-            <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Project</th><th>Type</th><th>Phase Tag</th><th>Judge Notes</th></tr></thead>
-            <tbody id="advanced-tbody"></tbody>
-          </table>
+          <table><thead><tr><th>#</th><th>Name</th><th>Email</th><th>Project</th><th>Type</th><th>Phase Tag</th><th>Judge Notes</th></tr></thead><tbody id="advanced-tbody"></tbody></table>
         </div>
       </div>
-
-      <!-- MANAGE COLUMNS -->
       <div class="page" id="page-columns">
         <div class="table-card" style="padding:24px">
           <h3 style="font-size:15px;font-weight:600;margin-bottom:4px">Custom Columns</h3>
-          <p style="font-size:13px;color:var(--text3);margin-bottom:20px">These columns appear in All Registrations for every registrant. Changes sync instantly for all users.</p>
+          <p style="font-size:13px;color:var(--text3);margin-bottom:20px">Columns appear in All Registrations. Changes sync instantly for all users.</p>
           <div class="col-list" id="col-list"></div>
           <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:8px">
             <h4 style="font-size:12px;font-weight:600;color:var(--text3);margin-bottom:12px">ADD NEW COLUMN</h4>
             <div class="col-add-form">
-              <input type="text" id="new-col-label" placeholder="Column name (e.g. Confirmation Sent)"/>
-              <select id="new-col-type">
-                <option value="checkbox">Checkbox</option>
-                <option value="text">Text</option>
-                <option value="select">Select (dropdown)</option>
-              </select>
+              <input type="text" id="new-col-label" placeholder="Column name (e.g. Confirmation Sent)" aria-label="Column name"/>
+              <select id="new-col-type" aria-label="Column type"><option value="checkbox">Checkbox</option><option value="text">Text</option><option value="select">Select</option></select>
               <button class="btn btn-primary" onclick="addColumn()">Add Column</button>
             </div>
             <div id="new-col-options-wrap" style="display:none;margin-top:8px">
-              <input type="text" id="new-col-options" placeholder="Options separated by commas (e.g. Yes, No, Pending)" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--surface);color:var(--text)"/>
+              <input type="text" id="new-col-options" placeholder="Options separated by commas" aria-label="Select options" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--surface);color:var(--text)"/>
             </div>
           </div>
         </div>
       </div>
-
     </div>
     <div class="footnote">
-      <span>Data last updated: <strong id="last-updated">—</strong></span>
-      <span style="margin-left:auto;font-size:11px;color:var(--text3)">
-        <span class="thin-badge">⚠ Thin</span> = flagged for minimal content &nbsp;|&nbsp;
-        Custom data synced via Supabase
-      </span>
+      <span>Data last updated: <strong id="last-updated">&#8212;</strong></span>
+      <span style="margin-left:auto"><span class="thin-badge">&#9888; Thin</span> = flagged for minimal content &nbsp;|&nbsp; Custom data synced via Supabase</span>
     </div>
   </main>
 </div>
 
-<!-- DETAIL MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-avatar" id="m-avatar">?</div>
-      <div class="modal-title"><h3 id="m-name">—</h3><p id="m-meta">—</p></div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-title"><h3 id="m-name">&#8212;</h3><p id="m-meta">&#8212;</p></div>
+      <button class="modal-close" onclick="closeModal()">&#x2715;</button>
     </div>
     <div class="modal-body">
       <div class="modal-section" id="modal-left"></div>
@@ -321,12 +278,10 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
       <h4 style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)">Team members</h4>
       <div style="overflow-x:auto"><table class="members-table" id="modal-members-table"></table></div>
     </div>
-    <!-- Custom fields section -->
     <div class="modal-custom">
-      <h4>Status & Custom Fields <span style="font-size:10px;font-weight:400;color:var(--text3)">(synced to Supabase — shared with all users)</span></h4>
+      <h4>Status &amp; Custom Fields <span style="font-size:10px;font-weight:400;color:var(--text3)">(synced to Supabase)</span></h4>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-        <div class="custom-field">
-          <label>Status</label>
+        <div class="cf"><label for="modal-status">Status</label>
           <select id="modal-status" onchange="markDirty()">
             <option value="Pending Review">Pending Review</option>
             <option value="Under Review">Under Review</option>
@@ -339,10 +294,9 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
             <option value="Need Follow Up">Need Follow Up</option>
           </select>
         </div>
-        <div class="custom-field">
-          <label>Phase Tag</label>
+        <div class="cf"><label for="modal-phase">Phase Tag</label>
           <select id="modal-phase" onchange="markDirty()">
-            <option value="">— None —</option>
+            <option value="">&#8212; None &#8212;</option>
             <option value="Phase 1 - Registration">Phase 1 - Registration</option>
             <option value="Phase 1 - Review">Phase 1 - Review</option>
             <option value="Phase 2 - Technical Submission">Phase 2 - Technical Submission</option>
@@ -353,529 +307,398 @@ tbody td{padding:9px 12px;font-size:13px;vertical-align:middle}
         </div>
       </div>
       <div id="modal-custom-cols" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px"></div>
-      <div class="custom-field" style="grid-column:1/-1">
-        <label>Judge Notes</label>
-        <textarea id="modal-judge-notes" rows="2" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);resize:vertical" oninput="markDirty()" placeholder="Internal notes for judges..."></textarea>
+      <div class="cf"><label for="modal-judge-notes">Judge Notes</label>
+        <textarea id="modal-judge-notes" rows="2" style="resize:vertical" oninput="markDirty()" placeholder="Internal notes for judges..."></textarea>
       </div>
     </div>
     <div class="modal-footer">
-      <span id="modal-dirty-indicator" style="font-size:12px;color:var(--yellow);display:none">● Unsaved changes</span>
-      <button class="btn btn-primary" onclick="saveCustomData()" id="btn-save-custom">Save to Supabase</button>
+      <span id="modal-dirty" style="font-size:12px;color:var(--yellow);display:none">&#9679; Unsaved changes</span>
+      <button class="btn btn-primary" onclick="saveCustom()">Save to Supabase</button>
       <button class="btn btn-secondary" onclick="closeModal()">Close</button>
     </div>
   </div>
 </div>
 
 <script>
-// ── Supabase ───────────────────────────────────────────────────────────────
-const SUPA_URL =  + SUPABASE_URL + ;
-const SUPA_KEY =  + SUPABASE_KEY + ;
-const { createClient } = supabase;
-const db = createClient(SUPA_URL, SUPA_KEY);
+var SUPA_URL = "https://phgpdwiaccgalevbockn.supabase.co";
+var SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoZ3Bkd2lhY2NnYWxldmJvY2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzNzcxMzMsImV4cCI6MjA5Nzk1MzEzM30.17hR_N7iP7_CAH5vzwP5SRBFoxTbqO-lbr3lbVySwwY";
+var db = supabase.createClient(SUPA_URL, SUPA_KEY);
 
-// ── State ──────────────────────────────────────────────────────────────────
-var currentFilter = 'all';
-var currentSearch = '';
-var currentRegId = null;
-var customData = {};    // email -> {status, phase_tag, judge_notes, custom_cols}
-var customColumns = []; // [{col_key, col_label, col_type, col_options, col_order}]
-var isDirty = false;
-var _apexTrend = null;
+var curFilter = "all", curSearch = "", curRegId = null;
+var custData = {}, custCols = [], isDirty = false, apexT = null;
 
-// ── Supabase helpers ───────────────────────────────────────────────────────
-function setSyncStatus(state) {
-  var dot = document.getElementById('sync-dot');
-  var txt = document.getElementById('sync-text');
-  if (state === 'syncing') { dot.className='sync-dot syncing'; txt.textContent='Syncing...'; }
-  else if (state === 'error') { dot.className='sync-dot error'; txt.textContent='Sync error'; }
-  else { dot.className='sync-dot'; txt.textContent='Connected'; }
+function esc(s) {
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function ini(n) { return (n||"?").split(" ").map(function(w){return w[0]||"";}).join("").slice(0,2).toUpperCase(); }
+function markDirty() { isDirty=true; document.getElementById("modal-dirty").style.display=""; }
+
+function setSyncStatus(s) {
+  var dot=document.getElementById("sync-dot"), txt=document.getElementById("sync-text");
+  if (s==="syncing"){dot.className="sync-dot syncing";txt.textContent="Syncing...";}
+  else if (s==="error"){dot.className="sync-dot error";txt.textContent="Sync error";}
+  else {dot.className="sync-dot";txt.textContent="Connected";}
 }
 
-async function loadCustomData() {
-  setSyncStatus('syncing');
+function getCust(email) {
+  return custData[email]||{status:"Pending Review",phase_tag:"",judge_notes:"",custom_cols:{}};
+}
+
+function statusClass(s) {
+  var m={"Advanced - Round 2":"badge-blue","Advanced - Finals":"badge-purple","Winner":"badge-green",
+         "Rejected":"badge-red","Shortlisted":"badge-orange","Under Review":"badge-yellow",
+         "Need Follow Up":"badge-red","Withdrawn":"badge-gray"};
+  return m[s]||"badge-gray";
+}
+
+async function loadCustData() {
+  setSyncStatus("syncing");
   try {
-    var res = await db.from('registrant_custom').select('*');
+    var res = await db.from("registrant_custom").select("*");
     if (res.error) throw res.error;
-    customData = {};
-    (res.data || []).forEach(function(row) {
-      customData[row.email] = {
-        status: row.status || 'Pending Review',
-        phase_tag: row.phase_tag || '',
-        judge_notes: row.judge_notes || '',
-        custom_cols: row.custom_cols || {}
-      };
+    custData = {};
+    (res.data||[]).forEach(function(r) {
+      custData[r.email]={status:r.status||"Pending Review",phase_tag:r.phase_tag||"",judge_notes:r.judge_notes||"",custom_cols:r.custom_cols||{}};
     });
-    setSyncStatus('ok');
-  } catch(e) {
-    console.error('loadCustomData error:', e);
-    setSyncStatus('error');
-  }
+    setSyncStatus("ok");
+  } catch(e) { console.error(e); setSyncStatus("error"); }
 }
 
-async function loadCustomColumns() {
+async function loadCustCols() {
   try {
-    var res = await db.from('custom_columns').select('*').order('col_order');
+    var res = await db.from("custom_columns").select("*").order("col_order");
     if (res.error) throw res.error;
-    customColumns = res.data || [];
-    renderColManager();
-    renderRegTableHeaders();
-  } catch(e) {
-    console.error('loadCustomColumns error:', e);
-  }
+    custCols = res.data||[];
+    renderColMgr();
+    renderRegHead();
+  } catch(e) { console.error(e); }
 }
 
-async function saveCustomData() {
-  if (!currentRegId) return;
-  var r = DATA.registrations.find(function(x){ return x.id === currentRegId; });
+async function saveCustom() {
+  if (!curRegId) return;
+  var r = DATA.registrations.find(function(x){return x.id===curRegId;});
   if (!r) return;
-  setSyncStatus('syncing');
+  setSyncStatus("syncing");
   var cols = {};
-  customColumns.forEach(function(col) {
-    var el = document.getElementById('custom-col-'+col.col_key);
-    if (el) cols[col.col_key] = col.col_type === 'checkbox' ? el.checked : el.value;
+  custCols.forEach(function(col) {
+    var el=document.getElementById("custom-col-"+col.col_key);
+    if (el) cols[col.col_key]=col.col_type==="checkbox"?el.checked:el.value;
   });
-  var payload = {
-    email: r.email,
-    status: document.getElementById('modal-status').value,
-    phase_tag: document.getElementById('modal-phase').value,
-    judge_notes: document.getElementById('modal-judge-notes').value,
-    custom_cols: cols,
-    updated_at: new Date().toISOString()
-  };
+  var payload={email:r.email,status:document.getElementById("modal-status").value,
+    phase_tag:document.getElementById("modal-phase").value,
+    judge_notes:document.getElementById("modal-judge-notes").value,
+    custom_cols:cols,updated_at:new Date().toISOString()};
   try {
-    var res = await db.from('registrant_custom').upsert(payload, {onConflict:'email'});
+    var res = await db.from("registrant_custom").upsert(payload,{onConflict:"email"});
     if (res.error) throw res.error;
-    customData[r.email] = payload;
-    isDirty = false;
-    document.getElementById('modal-dirty-indicator').style.display = 'none';
-    setSyncStatus('ok');
-    renderRegistrations();
-    renderAdvanced();
-    updateAdvancedBadge();
-  } catch(e) {
-    console.error('saveCustomData error:', e);
-    setSyncStatus('error');
-    alert('Save failed. Check console for details.');
-  }
+    custData[r.email]=payload;
+    isDirty=false;
+    document.getElementById("modal-dirty").style.display="none";
+    setSyncStatus("ok");
+    renderRegs(); renderAdv(); updateAdvBadge();
+  } catch(e) { console.error(e); setSyncStatus("error"); alert("Save failed: "+e.message); }
 }
 
 async function addColumn() {
-  var label = document.getElementById('new-col-label').value.trim();
-  var type = document.getElementById('new-col-type').value;
-  if (!label) { alert('Please enter a column name.'); return; }
-  var key = label.toLowerCase().replace(/[^a-z0-9]/g,'_').replace(/__+/g,'_');
-  var options = type === 'select'
-    ? (document.getElementById('new-col-options').value.split(',').map(function(s){return s.trim();}).filter(Boolean))
-    : [];
-  var order = customColumns.length + 1;
-  setSyncStatus('syncing');
+  var label=document.getElementById("new-col-label").value.trim();
+  var type=document.getElementById("new-col-type").value;
+  if (!label) { alert("Please enter a column name."); return; }
+  var key=label.toLowerCase().replace(/[^a-z0-9]/g,"_").replace(/__+/g,"_");
+  var options=type==="select"?(document.getElementById("new-col-options").value.split(",").map(function(s){return s.trim();}).filter(Boolean)):[];
+  setSyncStatus("syncing");
   try {
-    var res = await db.from('custom_columns').insert({col_key:key, col_label:label, col_type:type, col_options:options, col_order:order});
+    var res=await db.from("custom_columns").insert({col_key:key,col_label:label,col_type:type,col_options:options,col_order:custCols.length+1});
     if (res.error) throw res.error;
-    await loadCustomColumns();
-    document.getElementById('new-col-label').value = '';
-    document.getElementById('new-col-options').value = '';
-    document.getElementById('new-col-options-wrap').style.display = 'none';
-    setSyncStatus('ok');
-  } catch(e) {
-    console.error('addColumn error:', e);
-    setSyncStatus('error');
-    alert('Failed to add column: ' + (e.message || e));
-  }
+    await loadCustCols();
+    document.getElementById("new-col-label").value="";
+    document.getElementById("new-col-options").value="";
+    document.getElementById("new-col-options-wrap").style.display="none";
+    setSyncStatus("ok");
+  } catch(e) { console.error(e); setSyncStatus("error"); alert("Failed: "+e.message); }
 }
 
 async function deleteColumn(key) {
-  if (!confirm('Delete column "' + key + '"? This will remove all data for this column.')) return;
-  setSyncStatus('syncing');
+  if (!confirm("Delete this column? All data for it will be lost.")) return;
+  setSyncStatus("syncing");
   try {
-    var res = await db.from('custom_columns').delete().eq('col_key', key);
+    var res=await db.from("custom_columns").delete().eq("col_key",key);
     if (res.error) throw res.error;
-    await loadCustomColumns();
-    setSyncStatus('ok');
-  } catch(e) {
-    console.error('deleteColumn error:', e);
-    setSyncStatus('error');
-  }
+    await loadCustCols();
+    setSyncStatus("ok");
+  } catch(e) { console.error(e); setSyncStatus("error"); }
 }
 
-// ── UI helpers ─────────────────────────────────────────────────────────────
-function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function initials(n) { return (n||'?').split(' ').map(function(w){return w[0]||'';}).join('').slice(0,2).toUpperCase(); }
-function markDirty() { isDirty=true; document.getElementById('modal-dirty-indicator').style.display=''; }
+document.getElementById("new-col-type").addEventListener("change",function(){
+  document.getElementById("new-col-options-wrap").style.display=this.value==="select"?"":"none";
+});
 
-function getCustom(email) {
-  return customData[email] || {status:'Pending Review', phase_tag:'', judge_notes:'', custom_cols:{}};
+function buildBarList(id,obj,order,maxItems) {
+  var el=document.getElementById(id); if (!el) return;
+  var entries=order?order.filter(function(k){return obj[k];}).map(function(k){return [k,obj[k]];}):Object.entries(obj).sort(function(a,b){return b[1]-a[1];});
+  var max=Math.max.apply(null,entries.map(function(e){return e[1];}));
+  var colors=["#e05a1e","#f47340","#378add","#1d9e75","#7f77dd","#e24b4a","#ba7517","#1D9E75"];
+  el.innerHTML=entries.slice(0,maxItems||8).map(function(e,i){
+    return "<div class=\"bar-row\"><span class=\"bar-label\" title=\""+esc(e[0])+"\">"+esc(e[0])+"</span><div class=\"bar-track\"><div class=\"bar-fill\" style=\"width:"+Math.round(e[1]/max*100)+"%;background:"+colors[i%colors.length]+"\">" + "</div></div><span class=\"bar-val\">"+e[1]+"</span></div>";
+  }).join("");
 }
 
-function statusBadgeClass(status) {
-  var m = {'Advanced - Round 2':'badge-blue','Advanced - Finals':'badge-purple','Winner':'badge-green',
-           'Rejected':'badge-red','Shortlisted':'badge-orange','Under Review':'badge-yellow',
-           'Need Follow Up':'badge-red','Withdrawn':'badge-gray'};
-  return m[status] || 'badge-gray';
+function buildTeamChart() {
+  var el=document.getElementById("teamSizeChart"); if (!el) return;
+  var ts=DATA.demographics.team_sizes;
+  var entries=Object.entries(ts);
+  var max=Math.max.apply(null,entries.map(function(e){return e[1];}));
+  el.innerHTML=entries.map(function(e){
+    return "<div style=\"display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px\">"
+      +"<span style=\"min-width:20px;text-align:right;color:#888\">"+esc(e[0])+"</span>"
+      +"<div style=\"flex:1;background:var(--surface2);border-radius:3px;height:20px;overflow:hidden\">"
+      +"<div style=\"width:"+Math.round(e[1]/max*100)+"%;background:#1d9e75;height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px\">"
+      +"<span style=\"color:#fff;font-size:11px;font-weight:500\">"+e[1]+"</span></div></div>"
+      +"<span style=\"font-size:11px;color:#888\">teams</span></div>";
+  }).join("");
 }
 
-// ── Bar charts ─────────────────────────────────────────────────────────────
-function buildBarList(id, obj, order, maxItems) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  var entries = order
-    ? order.filter(function(k){return obj[k];}).map(function(k){return [k,obj[k]];})
-    : Object.entries(obj).sort(function(a,b){return b[1]-a[1];});
-  var max = Math.max.apply(null, entries.map(function(e){return e[1];}));
-  var colors = ['#e05a1e','#f47340','#378add','#1d9e75','#7f77dd','#e24b4a','#ba7517','#1D9E75'];
-  var limit = maxItems || 8;
-  el.innerHTML = entries.slice(0,limit).map(function(e,i) {
-    return '<div class="bar-row"><span class="bar-label" title="'+esc(e[0])+'">'+esc(e[0])+'</span><div class="bar-track"><div class="bar-fill" style="width:'+Math.round(e[1]/max*100)+'%;background:'+colors[i%colors.length]+'"></div></div><span class="bar-val">'+e[1]+'</span></div>';
-  }).join('');
-}
-
-function buildTeamSizeChart() {
-  var el = document.getElementById('teamSizeChart');
-  if (!el) return;
-  var ts = DATA.demographics.team_sizes;
-  var entries = Object.entries(ts);
-  var max = Math.max.apply(null, entries.map(function(e){return e[1];}));
-  el.innerHTML = entries.map(function(e) {
-    var pct = Math.round(e[1]/max*100);
-    return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px">'
-      +'<span style="min-width:20px;text-align:right;color:#888">'+esc(e[0])+'</span>'
-      +'<div style="flex:1;background:var(--surface2);border-radius:3px;height:20px;overflow:hidden">'
-      +'<div style="width:'+pct+'%;background:#1d9e75;height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px">'
-      +'<span style="color:#fff;font-size:11px;font-weight:500">'+e[1]+'</span></div></div>'
-      +'<span style="font-size:11px;color:#888">teams</span></div>';
-  }).join('');
-}
-
-function buildTrendChart() {
-  var el = document.getElementById('trendChart');
-  if (!el) return;
-  if (_apexTrend) { _apexTrend.destroy(); _apexTrend = null; }
-  var rd = DATA.demographics.reg_by_date;
-  var entries = Object.entries(rd);
-  var labels = entries.map(function(e){ return e[0].slice(5); });
-  var vals = entries.map(function(e){ return e[1]; });
-  var opts = {
-    series: [{name:'Registrations',data:vals}],
-    chart:{type:'area',height:180,toolbar:{show:false},animations:{speed:600}},
-    stroke:{curve:'smooth',width:2,colors:['#e05a1e']},
-    fill:{type:'gradient',gradient:{opacityFrom:0.35,opacityTo:0.02,colorStops:[{offset:0,color:'#e05a1e',opacity:0.35},{offset:100,color:'#e05a1e',opacity:0.02}]}},
-    markers:{size:3,colors:['#e05a1e'],strokeColors:'#fff',strokeWidth:1,hover:{size:5}},
-    xaxis:{categories:labels,tickAmount:6,labels:{style:{colors:'#888',fontSize:'10px'},rotate:-30},axisBorder:{show:false},axisTicks:{show:false}},
-    yaxis:{labels:{style:{colors:'#888',fontSize:'10px'}},min:0},
-    grid:{borderColor:'rgba(0,0,0,0.05)',strokeDashArray:3},
-    tooltip:{theme:'light',y:{formatter:function(v){return v+' registrations';}}},
+function buildTrend() {
+  var el=document.getElementById("trendChart"); if (!el) return;
+  if (apexT){apexT.destroy();apexT=null;}
+  var rd=DATA.demographics.reg_by_date;
+  var entries=Object.entries(rd);
+  var opts={
+    series:[{name:"Registrations",data:entries.map(function(e){return e[1];})}],
+    chart:{type:"area",height:180,toolbar:{show:false},animations:{speed:600}},
+    stroke:{curve:"smooth",width:2,colors:["#e05a1e"]},
+    fill:{type:"gradient",gradient:{opacityFrom:0.35,opacityTo:0.02,colorStops:[{offset:0,color:"#e05a1e",opacity:0.35},{offset:100,color:"#e05a1e",opacity:0.02}]}},
+    markers:{size:3,colors:["#e05a1e"],strokeColors:"#fff",strokeWidth:1,hover:{size:5}},
+    xaxis:{categories:entries.map(function(e){return e[0].slice(5);}),tickAmount:6,labels:{style:{colors:"#888",fontSize:"10px"},rotate:-30},axisBorder:{show:false},axisTicks:{show:false}},
+    yaxis:{labels:{style:{colors:"#888",fontSize:"10px"}},min:0},
+    grid:{borderColor:"rgba(0,0,0,0.05)",strokeDashArray:3},
+    tooltip:{theme:"light",y:{formatter:function(v){return v+" registrations";}}},
     dataLabels:{enabled:false}
   };
-  _apexTrend = new ApexCharts(el, opts);
-  _apexTrend.render();
+  apexT=new ApexCharts(el,opts);
+  apexT.render();
 }
 
-// ── Registrations table ────────────────────────────────────────────────────
-function renderRegTableHeaders() {
-  var thead = document.getElementById('reg-thead');
-  if (!thead) return;
-  var fixedCols = '<th>#</th><th>Name</th><th>Email</th><th>Project / Team</th><th>Type</th><th>Members</th><th>Status</th><th>Phase</th><th>Blanks</th><th>Content</th>';
-  var customCols = customColumns.map(function(col) {
-    return '<th>'+esc(col.col_label)+'</th>';
-  }).join('');
-  thead.innerHTML = fixedCols + customCols;
+function renderRegHead() {
+  var thead=document.getElementById("reg-thead"); if (!thead) return;
+  var h="<th>#</th><th>Name</th><th>Email</th><th>Project / Team</th><th>Type</th><th>Members</th><th>Status</th><th>Phase</th><th>Blanks</th><th>Content</th>";
+  h+=custCols.map(function(col){return "<th>"+esc(col.col_label)+"</th>";}).join("");
+  thead.innerHTML=h;
 }
 
 function getFiltered() {
-  return DATA.registrations.filter(function(r) {
-    if (currentFilter==='Team' && r.final_type!=='Team') return false;
-    if (currentFilter==='Individual' && r.final_type!=='Individual') return false;
-    if (currentFilter==='incomplete' && r.blank_fields.length===0) return false;
-    if (currentFilter==='thin' && !r.thin_content) return false;
-    if (currentSearch) {
-      var q = currentSearch.toLowerCase();
-      if (![r.luma_name, r.email, r.project_name, r.team_name].some(function(f){return (f||'').toLowerCase().indexOf(q)!==-1;})) return false;
-    }
+  return DATA.registrations.filter(function(r){
+    if (curFilter==="Team"&&r.final_type!=="Team") return false;
+    if (curFilter==="Individual"&&r.final_type!=="Individual") return false;
+    if (curFilter==="incomplete"&&r.blank_fields.length===0) return false;
+    if (curFilter==="thin"&&!r.thin_content) return false;
+    if (curSearch){var q=curSearch.toLowerCase();if(![r.luma_name,r.email,r.project_name,r.team_name].some(function(f){return (f||"").toLowerCase().indexOf(q)!==-1;}))return false;}
     return true;
   });
 }
 
-function truncCell(text, maxLen) {
-  if (!text || text.length<=maxLen) return '<span style="font-size:12px">'+esc(text||'—')+'</span>';
-  return '<div class="cell-truncate"><span style="font-size:12px">'+esc(text)+'</span><span class="expand-btn" onclick="expandCell(this,event)">▼ Show more</span></div>';
+function trunc(text,maxLen){
+  if(!text||text.length<=maxLen) return "<span style=\"font-size:12px\">"+esc(text||"&#8212;")+"</span>";
+  return "<div class=\"cell-trunc\"><span style=\"font-size:12px\">"+esc(text)+"</span><span class=\"exp-btn\" onclick=\"expCell(this,event)\">&#9660; Show more</span></div>";
 }
-function expandCell(el, event) {
+function expCell(el,event){
   event.stopPropagation();
-  var wrap = el.closest('.cell-truncate');
-  var exp = wrap.classList.toggle('expanded');
-  el.textContent = exp ? '▲ Show less' : '▼ Show more';
+  var wrap=el.closest(".cell-trunc");
+  el.textContent=wrap.classList.toggle("exp")?"&#9650; Show less":"&#9660; Show more";
 }
 
-function renderRegistrations() {
-  renderRegTableHeaders();
-  var rows = getFiltered();
-  var tbody = document.getElementById('reg-tbody');
-  tbody.innerHTML = rows.map(function(r, i) {
-    var cust = getCustom(r.email);
-    var status = cust.status || 'Pending Review';
-    var phase = cust.phase_tag || '';
-    var blanks = r.blank_fields.length;
-    var typeClass = r.final_type==='Team' ? 'badge-blue' : 'badge-gray';
-    var customCells = customColumns.map(function(col) {
-      var val = (cust.custom_cols && cust.custom_cols[col.col_key]);
-      if (col.col_type==='checkbox') {
-        return '<td style="text-align:center">'+(val ? '✅' : '☐')+'</td>';
-      }
-      return '<td style="font-size:12px">'+esc(val||'')+'</td>';
-    }).join('');
-    return '<tr onclick="openModal(''+r.id+'')">'
-      +'<td style="color:var(--text3)">'+(i+1)+'</td>'
-      +'<td><strong>'+esc(r.luma_name)+'</strong><br><span style="font-size:11px;color:var(--text3)">'+esc(r.registered_at)+'</span></td>'
-      +'<td style="font-size:12px;color:var(--text2)">'+esc(r.email)+'</td>'
-      +'<td style="max-width:180px">'+truncCell(r.project_name||r.luma_team||'—',50)+'</td>'
-      +'<td><span class="badge '+typeClass+'">'+(r.final_type||'—')+'</span></td>'
-      +'<td style="text-align:center">'+(r.luma_members||(r.final_type==='Individual'?'1':'—'))+'</td>'
-      +'<td><span class="badge '+statusBadgeClass(status)+'">'+esc(status)+'</span></td>'
-      +'<td style="font-size:11px;color:var(--text3)">'+esc(phase)+'</td>'
-      +'<td>'+(blanks>0?'<span class="thin-badge" style="background:#f8d7da;color:#721c24;border-color:#f5c6cb">'+blanks+' blank'+(blanks>1?'s':'')+'</span>':'<span style="color:var(--green);font-size:12px">✓</span>')+'</td>'
-      +'<td>'+(r.thin_content?'<span class="thin-badge">⚠ Thin</span>':'<span style="color:var(--green);font-size:12px">✓</span>')+'</td>'
-      + customCells
-      +'</tr>';
-  }).join('');
-  document.getElementById('filter-count').textContent = rows.length+' of '+DATA.registrations.length;
+function renderRegs() {
+  renderRegHead();
+  var rows=getFiltered();
+  var tbody=document.getElementById("reg-tbody");
+  tbody.innerHTML=rows.map(function(r,i){
+    var c=getCust(r.email);
+    var status=c.status||"Pending Review";
+    var blanks=r.blank_fields.length;
+    var cc=custCols.map(function(col){
+      var val=c.custom_cols&&c.custom_cols[col.col_key];
+      return col.col_type==="checkbox"?"<td style=\"text-align:center\">"+(val?"&#10003;":"&#9633;")+"</td>":"<td style=\"font-size:12px\">"+esc(val||"")+"</td>";
+    }).join("");
+    var row = "<tr onclick=\"openModal('" + r.id + "')\">"; 
+    row += "<td style=\"color:var(--text3)\">"+(i+1)+"</td>";
+    row += "<td><strong>"+esc(r.luma_name)+"</strong><br><span style=\"font-size:11px;color:var(--text3)\">"+esc(r.registered_at)+"</span></td>";
+    row += "<td style=\"font-size:12px;color:var(--text2)\">"+esc(r.email)+"</td>";
+    row += "<td style=\"max-width:180px\">"+trunc(r.project_name||r.luma_team||"&#8212;",50)+"</td>";
+    row += "<td><span class=\"badge "+(r.final_type==="Team"?"badge-blue":"badge-gray")+"\">"+(r.final_type||"&#8212;")+"</span></td>";
+    row += "<td style=\"text-align:center\">"+(r.luma_members||(r.final_type==="Individual"?"1":"&#8212;"))+"</td>";
+    row += "<td><span class=\"badge "+statusClass(status)+"\">"+esc(status)+"</span></td>";
+    row += "<td style=\"font-size:11px;color:var(--text3)\">"+esc(c.phase_tag||"")+"</td>";
+    row += "<td>"+(blanks>0?"<span class=\"thin-badge\" style=\"background:#f8d7da;color:#721c24;border-color:#f5c6cb\">"+blanks+" blank"+(blanks>1?"s":"")+"</span>":"<span style=\"color:var(--green)\">&#10003;</span>")+"</td>";
+    row += "<td>"+(r.thin_content?"<span class=\"thin-badge\">&#9888; Thin</span>":"<span style=\"color:var(--green)\">&#10003;</span>")+"</td>";
+    row += cc+"</tr>";
+    return row;
+  }).join("");
+  document.getElementById("filter-count").textContent=rows.length+" of "+DATA.registrations.length;
 }
 
-function setFilter(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  renderRegistrations();
-}
-function onSearch(val) { currentSearch=val; renderRegistrations(); }
+function setFilter(f,btn){curFilter=f;document.querySelectorAll(".filter-btn").forEach(function(b){b.classList.remove("active");});btn.classList.add("active");renderRegs();}
+function onSearch(val){curSearch=val;renderRegs();}
 
-// ── Incomplete ─────────────────────────────────────────────────────────────
-function renderIncomplete() {
-  var inc = DATA.registrations.filter(function(r){return r.blank_fields.length>0;});
-  var badge = document.getElementById('incomplete-badge');
-  badge.textContent = inc.length;
-  badge.style.display = inc.length>0 ? '' : 'none';
-  document.getElementById('incomplete-list').innerHTML = inc.map(function(r) {
-    var link = r.link ? '<a href="'+esc(r.link)+'" target="_blank" onclick="event.stopPropagation()" style="font-size:12px;color:var(--blue);text-decoration:none">Open sheet ↗</a>' : '<span style="font-size:12px;color:var(--text3)">No link</span>';
-    var tags = r.blank_fields.map(function(f){return '<span class="missing-tag">'+esc(f)+'</span>';}).join('');
-    return '<div class="incomplete-card" onclick="openModal(''+r.id+'')">'
-      +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">'
-      +'<div style="width:32px;height:32px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;flex-shrink:0">'+initials(r.luma_name)+'</div>'
-      +'<div><div style="font-size:14px;font-weight:500">'+esc(r.luma_name)+'</div><div style="font-size:12px;color:var(--text3)">'+esc(r.email)+' · '+r.blank_fields.length+' blank field'+(r.blank_fields.length>1?'s':'')+'</div></div>'
-      +'<div style="margin-left:auto">'+link+'</div></div>'
-      +'<div class="missing-fields">'+tags+'</div></div>';
-  }).join('');
+function renderInc() {
+  var inc=DATA.registrations.filter(function(r){return r.blank_fields.length>0;});
+  var badge=document.getElementById("incomplete-badge");
+  badge.textContent=inc.length; badge.style.display=inc.length>0?"":"none";
+  document.getElementById("incomplete-list").innerHTML=inc.map(function(r){
+    var link=r.link?"<a href=\""+esc(r.link)+"\" target=\"_blank\" onclick=\"event.stopPropagation()\" style=\"font-size:12px;color:var(--blue);text-decoration:none\">Open sheet &#8599;</a>":"<span style=\"font-size:12px;color:var(--text3)\">No link</span>";
+    var tags=r.blank_fields.map(function(f){return "<span class=\"missing-tag\">"+esc(f)+"</span>";}).join("");
+    return "<div class=\"inc-card\" onclick=\"openModal('"+r.id+"')\">"+
+      "<div style=\"display:flex;align-items:center;gap:10px;margin-bottom:8px\">"+
+      "<div style=\"width:32px;height:32px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;flex-shrink:0\">"+ini(r.luma_name)+"</div>"+
+      "<div><div style=\"font-size:14px;font-weight:500\">"+esc(r.luma_name)+"</div>"+
+      "<div style=\"font-size:12px;color:var(--text3)\">"+esc(r.email)+" &#183; "+r.blank_fields.length+" blank field"+(r.blank_fields.length>1?"s":"")+"</div></div>"+
+      "<div style=\"margin-left:auto\">"+link+"</div></div>"+
+      "<div class=\"missing-fields\">"+tags+"</div></div>";
+  }).join("");
 }
 
-// ── Advanced ───────────────────────────────────────────────────────────────
-function updateAdvancedBadge() {
-  var adv = DATA.registrations.filter(function(r){
-    var c = getCustom(r.email);
-    return c.status && (c.status.indexOf('Advanced')===0 || c.status==='Winner' || c.status==='Shortlisted');
-  });
-  document.getElementById('advanced-badge').textContent = adv.length;
+function updateAdvBadge() {
+  var adv=DATA.registrations.filter(function(r){var c=getCust(r.email);return c.status&&(c.status.indexOf("Advanced")===0||c.status==="Winner"||c.status==="Shortlisted");});
+  document.getElementById("advanced-badge").textContent=adv.length;
   return adv;
 }
 
-function renderAdvanced() {
-  var adv = updateAdvancedBadge();
-  document.getElementById('advanced-count').textContent = adv.length ? adv.length+' registration'+(adv.length>1?'s':'')+' advanced/shortlisted' : 'No registrations advanced yet';
-  document.getElementById('advanced-tbody').innerHTML = adv.map(function(r,i) {
-    var c = getCustom(r.email);
-    return '<tr onclick="openModal(''+r.id+'')">'
-      +'<td style="color:var(--text3)">'+(i+1)+'</td>'
-      +'<td><strong>'+esc(r.luma_name)+'</strong></td>'
-      +'<td style="font-size:12px;color:var(--text2)">'+esc(r.email)+'</td>'
-      +'<td style="font-size:12px">'+esc(r.project_name||r.luma_team||'—')+'</td>'
-      +'<td><span class="badge '+(r.final_type==='Team'?'badge-blue':'badge-gray')+'">'+(r.final_type||'—')+'</span></td>'
-      +'<td style="font-size:12px"><span class="badge '+statusBadgeClass(c.status)+'">'+esc(c.phase_tag||'—')+'</span></td>'
-      +'<td style="font-size:12px;color:var(--text3)">'+esc(c.judge_notes||'')+'</td>'
-      +'</tr>';
-  }).join('');
+function renderAdv() {
+  var adv=updateAdvBadge();
+  document.getElementById("advanced-count").textContent=adv.length?adv.length+" registration"+(adv.length>1?"s":"")+" advanced/shortlisted":"No registrations advanced yet";
+  document.getElementById("advanced-tbody").innerHTML=adv.map(function(r,i){
+    var c=getCust(r.email);
+    return "<tr onclick=\"openModal('"+r.id+"')\"><td style=\"color:var(--text3)\">"+(i+1)+"</td><td><strong>"+esc(r.luma_name)+"</strong></td><td style=\"font-size:12px;color:var(--text2)\">"+esc(r.email)+"</td><td style=\"font-size:12px\">"+esc(r.project_name||r.luma_team||"&#8212;")+"</td><td><span class=\"badge "+(r.final_type==="Team"?"badge-blue":"badge-gray")+"\">"+(r.final_type||"&#8212;")+"</span></td><td style=\"font-size:12px\">"+esc(c.phase_tag||"&#8212;")+"</td><td style=\"font-size:12px;color:var(--text3)\">"+esc(c.judge_notes||"")+"</td></tr>";
+  }).join("");
 }
 
-function exportAdvanced() {
-  var adv = DATA.registrations.filter(function(r){
-    var c = getCustom(r.email); return c.status && c.status.indexOf('Advanced')===0;
-  });
-  var lines = ['Name,Email,Project,Type,Members,Status,Phase,Judge Notes'].concat(adv.map(function(r){
-    var c = getCustom(r.email);
-    return '"'+r.luma_name+'","'+r.email+'","'+(r.project_name||r.luma_team||'')+'","'+(r.final_type||'')+'","'+(r.luma_members||'')+'","'+(c.status||'')+'","'+(c.phase_tag||'')+'","'+(c.judge_notes||'')+'"';
-  }));
-  var blob = new Blob([lines.join('
-')],{type:'text/csv'});
-  var a = document.createElement('a'); a.href=URL.createObjectURL(blob);
-  a.download='OVAC_Advanced.csv'; a.click();
+function exportCSV() {
+  var adv=DATA.registrations.filter(function(r){var c=getCust(r.email);return c.status&&c.status.indexOf("Advanced")===0;});
+  var lines=["Name,Email,Project,Type,Members,Status,Phase,Judge Notes"].concat(adv.map(function(r){var c=getCust(r.email);return "\""+r.luma_name+"\",\""+r.email+"\",\""+((r.project_name||r.luma_team)||"")+"\"," +(r.final_type||"")+","+(r.luma_members||"")+ ",\""+c.status+"\",\""+c.phase_tag+"\",\""+c.judge_notes+"\"" ;}));
+  var blob=new Blob([lines.join("\n")],{type:"text/csv"});
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="OVAC_Advanced.csv";a.click();
 }
 
-// ── Column manager ─────────────────────────────────────────────────────────
-function renderColManager() {
-  var list = document.getElementById('col-list');
-  if (!list) return;
-  if (customColumns.length === 0) {
-    list.innerHTML = '<div style="font-size:13px;color:var(--text3);padding:12px 0">No custom columns yet. Add one below.</div>';
-    return;
-  }
-  list.innerHTML = customColumns.map(function(col) {
-    return '<div class="col-item">'
-      +'<span class="col-item-label">'+esc(col.col_label)+'</span>'
-      +'<span class="col-item-type">'+esc(col.col_type)+'</span>'
-      +'<button class="btn btn-danger" style="padding:3px 8px;font-size:11px" onclick="deleteColumn(''+esc(col.col_key)+'')">Delete</button>'
-      +'</div>';
-  }).join('');
+function renderColMgr() {
+  var list=document.getElementById("col-list"); if (!list) return;
+  if (custCols.length===0){list.innerHTML="<div style=\"font-size:13px;color:var(--text3);padding:12px 0\">No custom columns yet. Add one below.</div>";return;}
+  list.innerHTML=custCols.map(function(col){
+    return "<div class=\"col-item\"><span class=\"col-item-label\">"+esc(col.col_label)+"</span><span class=\"col-item-type\">"+esc(col.col_type)+"</span><button class=\"btn btn-danger\" style=\"padding:3px 8px;font-size:11px\" onclick=\"deleteColumn('"+esc(col.col_key)+"')\">Delete</button></div>";
+  }).join("");
 }
 
-document.getElementById('new-col-type').addEventListener('change', function() {
-  document.getElementById('new-col-options-wrap').style.display = this.value==='select' ? '' : 'none';
-});
-
-// ── Modal ──────────────────────────────────────────────────────────────────
-function fv(v) {
-  var s = String(v||'').trim();
-  return (s&&s!=='nan'&&s!=='None') ? '<span class="field-val">'+esc(s)+'</span>' : '<span class="field-val empty">—</span>';
-}
-function fvLink(v) {
-  var s = String(v||'').trim();
-  return (s&&s.indexOf('http')===0) ? '<span class="field-val"><a href="'+esc(s)+'" target="_blank">'+esc(s.length>55?s.slice(0,52)+'...':s)+'</a></span>' : fv(v);
-}
-function modalExpandVal(text) {
+function fv(v){var s=String(v||"").trim();return (s&&s!=="nan"&&s!=="None")?"<span class=\"field-val\">"+esc(s)+"</span>":"<span class=\"field-val empty\">&#8212;</span>";}
+function fvLink(v){var s=String(v||"").trim();return (s&&s.indexOf("http")===0)?"<span class=\"field-val\"><a href=\""+esc(s)+"\" target=\"_blank\">"+esc(s.length>55?s.slice(0,52)+"...":s)+"</a></span>":fv(v);}
+function mExpand(text){
   if (!text||text.length<=180) return esc(text);
-  var id='mx'+Math.random().toString(36).slice(2,7);
-  return '<span id="'+id+'-s">'+esc(text.slice(0,177))+'… <span style="color:var(--accent);cursor:pointer;font-size:11px" onclick="document.getElementById(''+id+'-s').style.display='none';document.getElementById(''+id+'-f').style.display='block'">Show more ▼</span></span>'
-    +'<span id="'+id+'-f" style="display:none">'+esc(text)+' <span style="color:var(--accent);cursor:pointer;font-size:11px" onclick="document.getElementById(''+id+'-f').style.display='none';document.getElementById(''+id+'-s').style.display='block'">Show less ▲</span></span>';
+  var id="mx"+Math.random().toString(36).slice(2,7);
+  return "<span id=\""+id+"-s\">"+esc(text.slice(0,177))+"&#8230; <span style=\"color:var(--accent);cursor:pointer;font-size:11px\" onclick=\"document.getElementById('"+id+"-s').style.display='none';document.getElementById('"+id+"-f').style.display=''\">Show more</span></span>"
+    +"<span id=\""+id+"-f\" style=\"display:none\">"+esc(text)+" <span style=\"color:var(--accent);cursor:pointer;font-size:11px\" onclick=\"document.getElementById('"+id+"-f').style.display='none';document.getElementById('"+id+"-s').style.display=''\">Show less</span></span>";
 }
 
 function openModal(id) {
-  var r = DATA.registrations.find(function(x){return x.id===id;});
-  if (!r) return;
-  currentRegId = id;
-  isDirty = false;
-  document.getElementById('modal-dirty-indicator').style.display='none';
-  document.getElementById('m-avatar').textContent = initials(r.luma_name);
-  document.getElementById('m-name').textContent = r.luma_name+(r.project_name?' — '+r.project_name:'');
-  document.getElementById('m-meta').textContent = r.email+' · '+(r.final_type||'')+(r.luma_members?' · '+r.luma_members+' members':'')+' · Registered '+r.registered_at;
-
-  var leftHtml = '<h4>Registration (Luma)</h4>';
-  Object.entries(r.luma_answers).forEach(function(kv) {
-    var k=kv[0], v=kv[1];
-    var valHtml;
-    if (!v||!v.trim()||v==='nan') valHtml='<span class="field-val empty" style="color:var(--red)">⚠ Blank</span>';
-    else if (v.indexOf('http')===0) valHtml='<div class="field-val"><a href="'+esc(v)+'" target="_blank">'+esc(v.length>60?v.slice(0,57)+'...':v)+'</a></div>';
-    else valHtml='<div class="field-val">'+modalExpandVal(v)+'</div>';
-    leftHtml+='<div class="field-row"><span class="field-lbl">'+esc(k)+'</span>'+valHtml+'</div>';
+  var r=DATA.registrations.find(function(x){return x.id===id;}); if (!r) return;
+  curRegId=id; isDirty=false;
+  document.getElementById("modal-dirty").style.display="none";
+  document.getElementById("m-avatar").textContent=ini(r.luma_name);
+  document.getElementById("m-name").textContent=r.luma_name+(r.project_name?" &#8212; "+r.project_name:"");
+  document.getElementById("m-meta").textContent=r.email+" &#183; "+(r.final_type||"")+(r.luma_members?" &#183; "+r.luma_members+" members":"")+" &#183; Registered "+r.registered_at;
+  var lh="<h4>Registration (Luma)</h4>";
+  Object.entries(r.luma_answers).forEach(function(kv){
+    var k=kv[0],v=kv[1],vh;
+    if (!v||!v.trim()||v==="nan") vh="<span class=\"field-val empty\" style=\"color:var(--red)\">&#9888; Blank</span>";
+    else if (v.indexOf("http")===0) vh="<div class=\"field-val\"><a href=\""+esc(v)+"\" target=\"_blank\">"+esc(v.length>60?v.slice(0,57)+"...":v)+"</a></div>";
+    else vh="<div class=\"field-val\">"+mExpand(v)+"</div>";
+    lh+="<div class=\"field-row\"><span class=\"field-lbl\">"+esc(k)+"</span>"+vh+"</div>";
   });
-  if (r.link) leftHtml+='<div class="field-row"><span class="field-lbl">Participant details link</span>'+fvLink(r.link)+'</div>';
-  document.getElementById('modal-left').innerHTML = leftHtml;
+  if (r.link) lh+="<div class=\"field-row\"><span class=\"field-lbl\">Participant details link</span>"+fvLink(r.link)+"</div>";
+  document.getElementById("modal-left").innerHTML=lh;
+  var rh="<h4>Template info</h4>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">Full name</span>"+fv(r.full_name)+"</div>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">Location</span>"+fv(r.location)+"</div>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">Organization</span>"+fv(r.org)+"</div>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">Current role</span>"+fv(r.role)+"</div>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">Expertise</span>"+fv(r.expertise)+"</div>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">Years exp</span>"+fv(r.years_exp)+"</div>"
+    +"<div class=\"field-row\"><span class=\"field-lbl\">LinkedIn / GitHub</span>"+fvLink(r.linkedin)+"</div>"
+    +(r.team_name?"<div class=\"field-row\"><span class=\"field-lbl\">Team name</span>"+fv(r.team_name)+"</div>":"")
+    +(r.notes?"<div class=\"field-row\"><span class=\"field-lbl\">Notes</span><span class=\"field-val\" style=\"color:var(--accent)\">"+esc(r.notes)+"</span></div>":"");
+  if (r.blank_fields.length) rh+="<div class=\"field-row\" style=\"margin-top:8px\"><span class=\"field-lbl\" style=\"color:var(--red)\">Missing fields ("+r.blank_fields.length+")</span><div class=\"missing-fields\" style=\"margin-top:4px\">"+r.blank_fields.map(function(f){return "<span class=\"missing-tag\">"+esc(f)+"</span>";}).join("")+"</div></div>";
+  document.getElementById("modal-right").innerHTML=rh;
+  var mw=document.getElementById("modal-members-wrap");
+  if (r.members&&r.members.length>0){
+    mw.style.display="block";
+    document.getElementById("modal-members-table").innerHTML="<tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Location</th><th>Org</th><th>Role</th><th>Expertise</th><th>Years</th><th>LinkedIn/GitHub</th></tr>"
+      +r.members.map(function(m){var li=(m.linkedin&&m.linkedin.indexOf("http")===0)?"<a href=\""+esc(m.linkedin)+"\" target=\"_blank\" style=\"color:var(--blue);font-size:11px\">&#8599; Link</a>":esc(m.linkedin||"&#8212;");
+        return "<tr><td>"+esc(m.num)+"</td><td>"+esc(m.name)+"</td><td>"+esc(m.email)+"</td><td>"+esc(m.phone)+"</td><td>"+esc(m.location)+"</td><td>"+esc(m.org)+"</td><td>"+esc(m.role)+"</td><td>"+esc(m.expertise)+"</td><td>"+esc(m.years)+"</td><td>"+li+"</td></tr>";}).join("");
+  } else {mw.style.display="none";}
+  var c=getCust(r.email);
+  document.getElementById("modal-status").value=c.status||"Pending Review";
+  document.getElementById("modal-phase").value=c.phase_tag||"";
+  document.getElementById("modal-judge-notes").value=c.judge_notes||"";
+  var cc=document.getElementById("modal-custom-cols");
+  if (custCols.length===0){cc.innerHTML="<span style=\"font-size:12px;color:var(--text3)\">No custom columns yet.</span>";}
+  else{cc.innerHTML=custCols.map(function(col){
+    var val=c.custom_cols&&c.custom_cols[col.col_key];
+    var inp;
+    if (col.col_type==="checkbox") inp="<input type=\"checkbox\" id=\"custom-col-"+esc(col.col_key)+"\" "+(val?"checked":"")+" style=\"width:18px;height:18px;accent-color:var(--accent);cursor:pointer\" onchange=\"markDirty()\">";
+    else if (col.col_type==="select"){var opts=(col.col_options||[]).map(function(o){return "<option value=\""+esc(o)+"\">"+(val===o?" selected":"")+">"+esc(o)+"</option>";}).join("");inp="<select id=\"custom-col-"+esc(col.col_key)+"\" onchange=\"markDirty()\" style=\"padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%\"><option value=\"\">&#8212;</option>"+opts+"</select>";}
+    else inp="<input type=\"text\" id=\"custom-col-"+esc(col.col_key)+"\" value=\""+esc(val||"")+"\" oninput=\"markDirty()\" style=\"padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%\">";
+    return "<div class=\"cf\"><label>"+esc(col.col_label)+"</label>"+inp+"</div>";
+  }).join("");}
+  document.getElementById("modal-overlay").classList.add("open");
+}
 
-  var rightHtml = '<h4>Template info</h4>'
-    +'<div class="field-row"><span class="field-lbl">Full name</span>'+fv(r.full_name)+'</div>'
-    +'<div class="field-row"><span class="field-lbl">Location</span>'+fv(r.location)+'</div>'
-    +'<div class="field-row"><span class="field-lbl">Organization</span>'+fv(r.org)+'</div>'
-    +'<div class="field-row"><span class="field-lbl">Current role</span>'+fv(r.role)+'</div>'
-    +'<div class="field-row"><span class="field-lbl">Expertise</span>'+fv(r.expertise)+'</div>'
-    +'<div class="field-row"><span class="field-lbl">Years exp</span>'+fv(r.years_exp)+'</div>'
-    +'<div class="field-row"><span class="field-lbl">LinkedIn / GitHub</span>'+fvLink(r.linkedin)+'</div>'
-    +(r.team_name?'<div class="field-row"><span class="field-lbl">Team name</span>'+fv(r.team_name)+'</div>':'')
-    +(r.notes?'<div class="field-row"><span class="field-lbl">Notes</span><span class="field-val" style="color:var(--accent)">'+esc(r.notes)+'</span></div>':'');
-  if (r.blank_fields.length) {
-    rightHtml+='<div class="field-row" style="margin-top:8px"><span class="field-lbl" style="color:var(--red)">Missing fields ('+r.blank_fields.length+')</span><div class="missing-fields" style="margin-top:4px">'+r.blank_fields.map(function(f){return '<span class="missing-tag">'+esc(f)+'</span>';}).join('')+'</div></div>';
+function closeModal(){if(isDirty&&!confirm("You have unsaved changes. Close without saving?"))return;document.getElementById("modal-overlay").classList.remove("open");}
+function closeModalOutside(e){if(e.target===document.getElementById("modal-overlay"))closeModal();}
+
+var pageTitles={overview:"Overview",registrations:"All Registrations",incomplete:"Incomplete Forms",advanced:"Advanced Registrations",columns:"Manage Columns"};
+function showPage(id){
+  document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
+  document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});
+  document.getElementById("page-"+id).classList.add("active");
+  document.querySelector(".nav-item[onclick=\"showPage('"+id+"')\"").classList.add("active");
+  document.getElementById("page-title").textContent=pageTitles[id]||id;
+  if(id==="registrations")renderRegs();
+  if(id==="incomplete")renderInc();
+  if(id==="advanced")renderAdv();
+  if(id==="columns")renderColMgr();
+}
+
+function toggleTheme(){
+  var isDark=document.documentElement.getAttribute("data-theme")==="dark";
+  document.documentElement.setAttribute("data-theme",isDark?"light":"dark");
+  document.getElementById("theme-btn").textContent=isDark?"&#127769;":"&#9728;";
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+  var D=DATA.demographics;
+  document.getElementById("m-total").textContent=D.total;
+  document.getElementById("m-participants").textContent="~"+D.est_participants;
+  document.getElementById("m-members-sub").textContent=D.total_members_extracted+" team members extracted";
+  document.getElementById("m-teams").textContent=D.teams;
+  document.getElementById("m-teams-sub").textContent="avg "+D.avg_team_size+" members";
+  document.getElementById("m-indiv").textContent=D.individuals;
+  buildBarList("expertise-bars",D.expertise);
+  buildBarList("role-bars",D.roles);
+  buildBarList("exp-bars",D.experience,["No exp yet","1–33 years","3–5 years","5–10 years","10+ years"]);
+  buildBarList("org-bars",D.orgs);
+  buildBarList("country-bars",D.countries,null,20);
+  if(D.cities&&D.cities["Vietnam"])buildBarList("city-bars",D.cities["Vietnam"],null,20);
+  buildTeamChart();
+  buildTrend();
+  var lu=D.last_updated||"";
+  if(lu){
+    var el=document.getElementById("last-updated");if(el)el.textContent=lu;
+    var sf=document.getElementById("sidebar-footer");if(sf)sf.innerHTML="Updated: "+lu+"<br>Replace data.js to refresh";
   }
-  document.getElementById('modal-right').innerHTML = rightHtml;
-
-  var memWrap = document.getElementById('modal-members-wrap');
-  if (r.members&&r.members.length>0) {
-    memWrap.style.display='block';
-    document.getElementById('modal-members-table').innerHTML =
-      '<tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Location</th><th>Org</th><th>Role</th><th>Expertise</th><th>Years</th><th>LinkedIn/GitHub</th></tr>'
-      +r.members.map(function(m){
-        var li=(m.linkedin&&m.linkedin.indexOf('http')===0)?'<a href="'+esc(m.linkedin)+'" target="_blank" onclick="event.stopPropagation()" style="color:var(--blue);font-size:11px">↗ Link</a>':esc(m.linkedin||'—');
-        return '<tr><td>'+esc(m.num)+'</td><td>'+esc(m.name)+'</td><td>'+esc(m.email)+'</td><td>'+esc(m.phone)+'</td><td>'+esc(m.location)+'</td><td>'+esc(m.org)+'</td><td>'+esc(m.role)+'</td><td>'+esc(m.expertise)+'</td><td>'+esc(m.years)+'</td><td>'+li+'</td></tr>';
-      }).join('');
-  } else { memWrap.style.display='none'; }
-
-  // Load custom fields
-  var cust = getCustom(r.email);
-  document.getElementById('modal-status').value = cust.status || 'Pending Review';
-  document.getElementById('modal-phase').value = cust.phase_tag || '';
-  document.getElementById('modal-judge-notes').value = cust.judge_notes || '';
-
-  // Render custom columns
-  var custCols = document.getElementById('modal-custom-cols');
-  custCols.innerHTML = customColumns.map(function(col) {
-    var val = cust.custom_cols && cust.custom_cols[col.col_key];
-    var input;
-    if (col.col_type==='checkbox') {
-      input='<input type="checkbox" id="custom-col-'+esc(col.col_key)+'" '+(val?'checked':'')+' style="width:18px;height:18px;accent-color:var(--accent);cursor:pointer" onchange="markDirty()">';
-    } else if (col.col_type==='select') {
-      var opts=(col.col_options||[]).map(function(o){return '<option value="'+esc(o)+'"'+(val===o?' selected':'')+'>'+esc(o)+'</option>';}).join('');
-      input='<select id="custom-col-'+esc(col.col_key)+'" onchange="markDirty()" style="padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%"><option value="">—</option>'+opts+'</select>';
-    } else {
-      input='<input type="text" id="custom-col-'+esc(col.col_key)+'" value="'+esc(val||'')+'" oninput="markDirty()" style="padding:6px 9px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%">';
-    }
-    return '<div class="custom-field"><label>'+esc(col.col_label)+'</label>'+input+'</div>';
-  }).join('');
-  if (customColumns.length===0) custCols.innerHTML='<span style="font-size:12px;color:var(--text3)">No custom columns yet. Add them in Manage Columns.</span>';
-
-  document.getElementById('modal-overlay').classList.add('open');
-}
-
-function closeModal() {
-  if (isDirty && !confirm('You have unsaved changes. Close without saving?')) return;
-  document.getElementById('modal-overlay').classList.remove('open');
-}
-function closeModalOutside(e) { if (e.target===document.getElementById('modal-overlay')) closeModal(); }
-
-// ── Navigation ─────────────────────────────────────────────────────────────
-var pageTitles = {overview:'Overview',registrations:'All Registrations',incomplete:'Incomplete Forms',advanced:'Advanced Registrations',columns:'Manage Columns'};
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('page-'+id).classList.add('active');
-  document.querySelector('.nav-item[onclick="showPage(''+id+'')"]').classList.add('active');
-  document.getElementById('page-title').textContent = pageTitles[id]||id;
-  if (id==='registrations') renderRegistrations();
-  if (id==='incomplete') renderIncomplete();
-  if (id==='advanced') renderAdvanced();
-  if (id==='columns') renderColManager();
-}
-
-function toggleTheme() {
-  var isDark = document.documentElement.getAttribute('data-theme')==='dark';
-  document.documentElement.setAttribute('data-theme', isDark?'light':'dark');
-  document.getElementById('theme-btn').textContent = isDark?'🌙':'☀️';
-}
-
-// ── Init ───────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', async function() {
-  var D = DATA.demographics;
-  document.getElementById('m-total').textContent = D.total;
-  document.getElementById('m-participants').textContent = '~'+D.est_participants;
-  document.getElementById('m-members-sub').textContent = D.total_members_extracted+' team members extracted';
-  document.getElementById('m-teams').textContent = D.teams;
-  document.getElementById('m-teams-sub').textContent = 'avg '+D.avg_team_size+' members';
-  document.getElementById('m-indiv').textContent = D.individuals;
-  buildBarList('expertise-bars',D.expertise);
-  buildBarList('role-bars',D.roles);
-  buildBarList('exp-bars',D.experience,['No exp yet','1–3 years','3–5 years','5–10 years','10+ years']);
-  buildBarList('org-bars',D.orgs);
-  buildBarList('country-bars',D.countries,null,20);
-  if (D.cities&&D.cities['Vietnam']) buildBarList('city-bars',D.cities['Vietnam'],null,20);
-  buildTeamSizeChart();
-  buildTrendChart();
-  var lu = D.last_updated||'';
-  if (lu) {
-    var el=document.getElementById('last-updated'); if(el) el.textContent=lu;
-    var sf=document.getElementById('sidebar-footer'); if(sf) sf.innerHTML='Updated: '+lu+'<br>Replace data.js to refresh';
+  if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){
+    document.documentElement.setAttribute("data-theme","dark");
+    var tb=document.getElementById("theme-btn");if(tb)tb.textContent="&#9728;";
   }
-  if (window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme','dark');
-    var tb=document.getElementById('theme-btn'); if(tb) tb.textContent='☀️';
-  }
-  // Load Supabase data
-  await loadCustomColumns();
-  await loadCustomData();
-  renderRegistrations();
-  renderIncomplete();
-  renderAdvanced();
+  await loadCustCols();
+  await loadCustData();
+  renderRegs();
+  renderInc();
+  renderAdv();
 });
 </script>
 </body>
