@@ -3359,7 +3359,56 @@ const DATA = {
       "team_name": "",
       "status": "Good",
       "notes": "",
-      "members": [],
+      "members": [
+        {
+          "num": "1 (Lead)",
+          "name": "Pham Ngoc Tho",
+          "email": "ngocthopham258@gmail.com",
+          "phone": "946391166",
+          "location": "Ho Chi Minh City",
+          "org": "University of Information Technology (UIT - VNUHCM)",
+          "role": "",
+          "expertise": "",
+          "years": "",
+          "linkedin": ""
+        },
+        {
+          "num": "2",
+          "name": "Do Minh Hien",
+          "email": "hien0945823630@gmail.com",
+          "phone": "946102947",
+          "location": "Ho Chi Minh City",
+          "org": "University of Technology and Engineering (HCMUTE)",
+          "role": "",
+          "expertise": "",
+          "years": "",
+          "linkedin": ""
+        },
+        {
+          "num": "3",
+          "name": "Nguyen Ngoc Bao Tram",
+          "email": "nguyentramzoey@gmail.com",
+          "phone": "",
+          "location": "Ho Chi Minh City",
+          "org": "Trusting Social",
+          "role": "",
+          "expertise": "",
+          "years": "",
+          "linkedin": ""
+        },
+        {
+          "num": "4",
+          "name": "Pham Ngoc Tan",
+          "email": "ngctnnnn@gmaill.com",
+          "phone": "",
+          "location": "Hanoi",
+          "org": "Google Cloud",
+          "role": "",
+          "expertise": "",
+          "years": "",
+          "linkedin": ""
+        }
+      ],
       "advanced": false,
       "judge_notes": ""
     },
@@ -6255,7 +6304,32 @@ const DATA = {
       "team_name": "",
       "status": "Good",
       "notes": "",
-      "members": [],
+      "members": [
+        {
+          "num": "1 (Lead)",
+          "name": "Truong Ngoc Gia Hieu",
+          "email": "giahieutruongngoc@gmail.com",
+          "phone": "947979438",
+          "location": "Ho Chi Minh City",
+          "org": "Swinburne University of Technology",
+          "role": "",
+          "expertise": "",
+          "years": "",
+          "linkedin": ""
+        },
+        {
+          "num": "2",
+          "name": "Pham Nguyen Minh Hoang",
+          "email": "pnmh06@gmail.com",
+          "phone": "932626167",
+          "location": "Ho Chi Minh City",
+          "org": "Swinburne University of Technology",
+          "role": "",
+          "expertise": "",
+          "years": "",
+          "linkedin": ""
+        }
+      ],
       "advanced": false,
       "judge_notes": ""
     },
@@ -8331,7 +8405,44 @@ const DATA = {
       "team_name": "AISpeech",
       "status": "Good",
       "notes": "",
-      "members": [],
+      "members": [
+        {
+          "num": "1 (Lead)",
+          "name": "Lam Dang Pham",
+          "email": "phamdanglam1986@gmail.com",
+          "phone": "+43 677 637 40840",
+          "location": "Austria",
+          "org": "",
+          "role": "Data Scientist",
+          "expertise": "Audio/Speech",
+          "years": "",
+          "linkedin": ""
+        },
+        {
+          "num": "2",
+          "name": "Khanh Quang Do",
+          "email": "doquangkhanh3@gmail.com",
+          "phone": "+84 967473258",
+          "location": "Vietnam",
+          "org": "",
+          "role": "Research Assistant",
+          "expertise": "Audio/Speech",
+          "years": "",
+          "linkedin": ""
+        },
+        {
+          "num": "3",
+          "name": "Dung Hoang Trinh",
+          "email": "hdung274520@gmail.com",
+          "phone": "+84 792959671",
+          "location": "Vietnam",
+          "org": "",
+          "role": "Student",
+          "expertise": "Audio/Speech",
+          "years": "",
+          "linkedin": ""
+        }
+      ],
       "advanced": false,
       "judge_notes": ""
     },
@@ -8904,8 +9015,8 @@ const DATA = {
     "teams": 83,
     "individuals": 31,
     "total_members_declared": 332,
-    "total_members_extracted": 325,
-    "est_participants": 356,
+    "total_members_extracted": 334,
+    "est_participants": 365,
     "avg_team_size": 4.1,
     "status_good": 111,
     "status_blank": 3,
@@ -8916,7 +9027,8 @@ const DATA = {
       "Australia": 2,
       "UK": 1,
       "USA": 1,
-      "India": 1
+      "India": 1,
+      "Austria": 1
     },
     "roles": {
       "Student": 143,
@@ -9023,7 +9135,7 @@ const DATA = {
         "Melbourne": 2
       }
     },
-    "total_located": 330,
+    "total_located": 331,
     "coverage": {
       "total": 356,
       "full_name": 354,
