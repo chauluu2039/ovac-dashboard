@@ -5,7 +5,7 @@ const DATA = {
       "luma_name": "Nguyễn Thanh Phong",
       "email": "phongnt.contact@gmail.com",
       "phone": "84862223252.0",
-      "registered_at": "2026-06-25",
+      "registered_at": "2026-06-26",
       "luma_type": "Team",
       "luma_members": "2.0",
       "luma_team": "nan",
@@ -206,7 +206,7 @@ const DATA = {
       "luma_name": "Hoang Nguyen",
       "email": "nshoang0808@gmail.com",
       "phone": "84842343639.0",
-      "registered_at": "2026-06-24",
+      "registered_at": "2026-06-25",
       "luma_type": "Team",
       "luma_members": "2.0",
       "luma_team": "DvH",
@@ -3321,7 +3321,7 @@ const DATA = {
       "blank_fields": [],
       "luma_answers": {
         "Applicant type": "Team",
-        "Participant details link": "https://acesse.one/flfd6sf",
+        "Participant details link": "https://docs.google.com/spreadsheets/d/1Ikf8OE1GBrZo5ZSqQrz7CvcAg6vT7LsC/edit?gid=121068040#gid=121068040",
         "Name of your project": "OneVoice Glass-Ear Hub",
         "Briefly describe your proposed solution": "OneVoice Glass-Ear Hub là hệ thống dịch giọng nói thời gian thực dạng tổ hợp, gồm ba thành phần: Hub xử lý trung tâm, kính thông minh hiển thị phụ đề và tai nghe không dây phát bản dịch. Toàn bộ pipeline nhận dạng giọng nói, dịch máy và tổng hợp giọng nói chạy trực tiếp trên Hub, không phụ thuộc Internet. Người dùng nhận bản dịch theo hai kênh song song: phụ đề trong tầm nhìn qua kính hoặc âm thanh qua tai nghe.",
         "What makes your solution innovative": "- Không phải app dịch trên điện thoại: thiết kế tổ hợp thiết bị đeo cho môi trường tay bận, nơi nhìn điện thoại là không an toàn.\n- Tách Hub xử lý nặng khỏi kính/tai nghe — kính và tai nghe nhẹ, dễ thay thế và nâng cấp.\n- Hai kênh đầu ra song song (phụ đề riêng tư trên kính + audio qua tai nghe) cho phép chọn theo ngữ cảnh: ồn thì đọc, di chuyển thì nghe.\n- Domain glossary và safety shortcut cho thuật ngữ công nghiệp và câu cảnh báo khẩn — tăng độ chính xác mà không cần fine-tune lại mô hình.",
@@ -3345,7 +3345,7 @@ const DATA = {
       "linkedin": "",
       "team_name": "",
       "status": "Blank - Need follow up",
-      "notes": "Non-GSheets link submitted: https://acesse.one/flfd6sf",
+      "notes": "",
       "members": [
         {
           "num": "1 (Lead)",
@@ -5334,7 +5334,7 @@ const DATA = {
       "luma_name": "Dai Nguyen Ba",
       "email": "it.dainb@gmail.com",
       "phone": "84948798843.0",
-      "registered_at": "2026-06-23",
+      "registered_at": "2026-06-24",
       "luma_type": "Team",
       "luma_members": "4.0",
       "luma_team": "Tứ đại Prompt Vương",
@@ -5427,7 +5427,7 @@ const DATA = {
       "luma_name": "Yihe Duan",
       "email": "alan.duanyihe@gmail.com",
       "phone": "6583013422.0",
-      "registered_at": "2026-06-23",
+      "registered_at": "2026-06-24",
       "luma_type": "Team",
       "luma_members": "3.0",
       "luma_team": "Hornet",
@@ -9467,9 +9467,10 @@ const DATA = {
       "2026-06-20": 1,
       "2026-06-21": 4,
       "2026-06-22": 4,
-      "2026-06-23": 16,
-      "2026-06-24": 61,
-      "2026-06-25": 4
+      "2026-06-23": 14,
+      "2026-06-24": 62,
+      "2026-06-25": 4,
+      "2026-06-26": 1
     },
     "last_updated": "Jun 26, 2026 08:37 GMT+7",
     "coverage": {

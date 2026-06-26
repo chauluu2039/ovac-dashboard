@@ -458,6 +458,7 @@ async function saveCustom(){
     assignedTags.push(p.dataset.tag);
   });
   cols.tags=assignedTags;
+  var notesEl=document.getElementById("modal-notes-input");
   var payload={
     email:r.email,
     status:"",
@@ -470,6 +471,7 @@ async function saveCustom(){
     var res=await db.from("registrant_custom").upsert(payload,{onConflict:"email"});
     if(res.error) throw res.error;
     custData[r.email]={tags:assignedTags,judge_notes:payload.judge_notes,custom_cols:cols};
+    if(notesEl) r.notes=notesEl.value;
     isDirty=false;
     document.getElementById("modal-dirty").style.display="none";
     setSyncStatus("ok");
@@ -974,14 +976,14 @@ function openModal(id){
     +"<div class=\"field-row\"><span class=\"field-lbl\">Years exp</span>"+fv(r.years_exp)+"</div>"
     +"<div class=\"field-row\"><span class=\"field-lbl\">LinkedIn/GitHub</span>"+fvLink(r.linkedin)+"</div>"
     +(r.team_name?"<div class=\"field-row\"><span class=\"field-lbl\">Team name</span>"+fv(r.team_name)+"</div>":"")
-    +(r.notes?"<div class=\"field-row\"><span class=\"field-lbl\">Notes</span><span class=\"field-val\" style=\"color:var(--accent)\">"+esc(r.notes)+"</span></div>":"");
+    +"<div class=\"field-row\" style=\"margin-top:4px\"><span class=\"field-lbl\">Notes (editable)</span>"    +"<input type=\"text\" id=\"modal-notes-input\" value=\""+esc(r.notes||"")+"\" oninput=\"markDirty()\" placeholder=\"Internal notes...\" style=\"padding:5px 8px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:var(--surface);color:var(--text);width:100%\"/></div>";
   if(r.blank_fields.length) rh+="<div class=\"field-row\" style=\"margin-top:6px\"><span class=\"field-lbl\" style=\"color:var(--red)\">Missing ("+r.blank_fields.length+")</span><div class=\"missing-fields\" style=\"margin-top:4px\">"+r.blank_fields.map(function(f){return "<span class=\"missing-tag\">"+esc(f)+"</span>";}).join("")+"</div></div>";
   document.getElementById("modal-right").innerHTML=rh;
   var mw=document.getElementById("modal-members-wrap");
   if(r.members&&r.members.length>0){
     mw.style.display="block";
     document.getElementById("modal-members-table").innerHTML="<tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Location</th><th>Org</th><th>Role</th><th>Expertise</th><th>Years</th><th>Link</th></tr>"
-      +r.members.map(function(m){var li=(m.linkedin&&m.linkedin.indexOf("http")===0)?"<a href=\""+esc(m.linkedin)+"\" target=\"_blank\" style=\"color:var(--blue);font-size:11px\">&#8599;</a>":esc(m.linkedin||"&#8212;");
+      +r.members.map(function(m){var li=(m.linkedin&&m.linkedin.indexOf("http")===0)?"<a href=\""+esc(m.linkedin)+"\" target=\"_blank\" style=\"color:var(--blue);font-size:11px\">&#8599; Link</a>":(m.linkedin&&m.linkedin.trim()&&m.linkedin!=="nan"?esc(m.linkedin):"<span style=\"color:var(--text3)\">&#8212;</span>");
         return "<tr><td>"+esc(m.num)+"</td><td>"+esc(m.name)+"</td><td>"+esc(m.email)+"</td><td>"+esc(m.phone)+"</td><td>"+esc(m.location)+"</td><td>"+esc(m.org)+"</td><td>"+esc(m.role)+"</td><td>"+esc(m.expertise)+"</td><td>"+esc(m.years)+"</td><td>"+li+"</td></tr>";}).join("");
   }else{mw.style.display="none";}
   // Tags
