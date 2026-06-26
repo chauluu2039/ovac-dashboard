@@ -285,7 +285,7 @@ tbody td{padding:8px 10px;font-size:13px;vertical-align:middle}
       <h2 id="page-title">Overview</h2>
       <div class="topbar-right">
         <div class="sync-indicator"><div class="sync-dot" id="sync-dot"></div><span id="sync-text">Connecting...</span></div>
-        <button class="icon-btn" onclick="toggleTheme()" id="theme-btn">&#127769;</button>
+        <button class="icon-btn" onclick="toggleTheme()" id="theme-btn">🌙</button>
         <input type="text" id="search-input" placeholder="Search..." oninput="onSearch(this.value)"/>
       </div>
     </div>
@@ -437,7 +437,7 @@ tbody td{padding:8px 10px;font-size:13px;vertical-align:middle}
           <tbody id="all-scores-body"></tbody>
         </table>
       </div>
-      <div id="my-score-section">
+      <div id="judge-score-input-wrap" style="display:none">
         <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px" id="my-score-label">Your scores:</div>
         <div class="score-grid">
           <div class="score-card">
@@ -526,7 +526,7 @@ function changePhase(phase){
         document.getElementById("score-innovation").value=myS?myS.innovation:"";
         document.getElementById("score-technical").value=myS?myS.technical:"";
         document.getElementById("score-business").value=myS?myS.business:"";
-        document.getElementById("score-total-display").textContent=myS?myS.weighted_total:"&#8212;";
+        document.getElementById("score-total-display").innerHTML=myS?myS.weighted_total:"&#8212;";
       }
     }
     renderRegs();
@@ -553,6 +553,7 @@ function buildNav(){
     {id:"overview",icon:"<rect x='3' y='3' width='7' height='7'/><rect x='14' y='3' width='7' height='7'/><rect x='3' y='14' width='7' height='7'/><rect x='14' y='14' width='7' height='7'/>",label:"Overview",roles:["admin","judge"]},
     {id:"registrations",icon:"<path d='M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z'/><polyline points='17 3 17 8 12 8'/>",label:"All Registrations",roles:["admin","judge"]},
     {id:"leaderboard",icon:"<polyline points='22 12 18 12 15 21 9 3 6 12 2 12'/>",label:"Leaderboard",badge:"lb-badge",roles:["admin","judge"]},
+    {id:"decisions",label:"Phase Decisions",icon:"<path d='M9 11l3 3L22 4'/><path d='M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11'/>",roles:["admin","judge"]},
     
     {id:"columns",icon:"<line x1='8' y1='6' x2='21' y2='6'/><line x1='8' y1='12' x2='21' y2='12'/><line x1='8' y1='18' x2='21' y2='18'/><line x1='3' y1='6' x2='3.01' y2='6'/><line x1='3' y1='12' x2='3.01' y2='12'/><line x1='3' y1='18' x2='3.01' y2='18'/>",label:"Manage Columns",roles:["admin"]},
   ];
@@ -575,6 +576,7 @@ function buildNav(){
     var at=document.getElementById("admin-toolbar");if(at)at.style.display="none";
     var ae=document.getElementById("adv-export");if(ae)ae.style.display="none";
     var an=document.getElementById("admin-notes-wrap");if(an)an.style.display="none";
+    var sw=document.getElementById("judge-score-input-wrap");if(sw)sw.style.display="block";
   }
 }
 
@@ -648,7 +650,7 @@ function updateScoreTotal(){
   var tech=parseFloat(document.getElementById("score-technical").value);
   var bus=parseFloat(document.getElementById("score-business").value);
   var el=document.getElementById("score-total-display");
-  if(isNaN(inn)||isNaN(tech)||isNaN(bus)){el.textContent="&#8212;";return;}
+  if(isNaN(inn)||isNaN(tech)||isNaN(bus)){el.innerHTML="&#8212;";return;}
   inn=Math.min(10,Math.max(1,inn));tech=Math.min(10,Math.max(1,tech));bus=Math.min(10,Math.max(1,bus));
   el.textContent=calcWeighted(inn,tech,bus).toFixed(1);
   markDirty();
@@ -904,7 +906,7 @@ function renderRegHead(){
     +"<th>Project / Team</th>"
     +sh("Type","type",true)
     +sh("Members","members",false)
-    +"<th>Tags <span onclick=\"openColFilter('status',this.closest('th'),event)\" style=\"cursor:pointer\">"+filterIcon("status")+"</span></th>"
+    +(IS_ADMIN?+"<th>Tags <span onclick=\"openColFilter('status',this.closest('th'),event)\" style=\"cursor:pointer\">"+filterIcon("status")+"</span></th>":"")
     +sh("Avg Score","avg_score",false)
     +(IS_ADMIN?""+sh("Blanks","blanks",false):"")
     +(IS_ADMIN?"<th>Content</th>":"");
@@ -941,7 +943,7 @@ function getSortedFiltered(){
 }
 
 function trunc(text,maxLen){if(!text||text.length<=maxLen)return "<span style=\"font-size:12px\">"+esc(text||"&#8212;")+"</span>";return "<div class=\"cell-trunc\"><span style=\"font-size:12px\">"+esc(text)+"</span><span class=\"exp-btn\" onclick=\"expCell(this,event)\">&#9660; more</span></div>";}
-function expCell(el,event){event.stopPropagation();var w=el.closest(".cell-trunc");el.textContent=w.classList.toggle("exp")?"&#9650; less":"&#9660; more";}
+function expCell(el,event){event.stopPropagation();var w=el.closest(".cell-trunc");el.textContent=w.classList.toggle("exp")?"▲ less":"▼ more";}
 
 function scoreColor(s){if(s==null)return "var(--text3)";if(s>=80)return "var(--green)";if(s>=60)return "var(--accent)";return "var(--red)";}
 
@@ -964,7 +966,7 @@ function renderRegs(){
     row+="<td style=\"max-width:160px\">"+trunc(r.project_name||r.luma_team||"&#8212;",45)+"</td>";
     row+="<td><span class=\"badge "+(r.final_type==="Team"?"badge-blue":"badge-gray")+"\">"+esc(r.final_type||"&#8212;")+"</span></td>";
     row+="<td style=\"text-align:center\">"+(r.luma_members||(r.final_type==="Individual"?"1":"&#8212;"))+"</td>";
-    row+="<td>"+renderTagPills(tags)+"</td>";
+    if(IS_ADMIN)row+="<td>"+renderTagPills(tags)+"</td>";
     row+="<td style=\"white-space:nowrap\">"+avgDisplay+"<br>"+myScore+"</td>";
     if(IS_ADMIN){row+="<td>"+(blanks>0?"<span class=\"thin-badge\" style=\"background:#f8d7da;color:#721c24;border-color:#f5c6cb\">"+blanks+"</span>":"<span style=\"color:var(--green)\">&#10003;</span>")+"</td>";}
     if(IS_ADMIN){row+="<td>"+(r.thin_content?"<span class=\"thin-badge\">&#9888; Thin</span>":"<span style=\"color:var(--green)\">&#10003;</span>")+"</td>";}
@@ -1059,7 +1061,7 @@ function openModal(id){
     else vh="<div class=\"field-val\">"+mExpand(v)+"</div>";
     lh+="<div class=\"field-row\"><span class=\"field-lbl\">"+esc(k)+"</span>"+vh+"</div>";
   });
-  if(r.link)lh+="<div class=\"field-row\"><span class=\"field-lbl\">Details link</span>"+fvLink(r.link)+"</div>";
+  if(r.link&&IS_ADMIN)lh+="<div class=\"field-row\"><span class=\"field-lbl\">Details link</span>"+fvLink(r.link)+"</div>";
   document.getElementById("modal-left").innerHTML=lh;
   // Right column - admin sees full info, judge sees limited
   var rh;
@@ -1098,7 +1100,7 @@ function openModal(id){
   document.getElementById("score-innovation").value=myS?myS.innovation:"";
   document.getElementById("score-technical").value=myS?myS.technical:"";
   document.getElementById("score-business").value=myS?myS.business:"";
-  document.getElementById("score-total-display").textContent=myS?myS.weighted_total:"&#8212;";
+  document.getElementById("score-total-display").innerHTML=myS?myS.weighted_total:"&#8212;";
   // Tags
   var c=getCust(r.email);
   renderModalTags(Array.isArray(c.tags)?c.tags:[]);
@@ -1127,7 +1129,7 @@ function closeModal(){if(isDirty&&!confirm("Unsaved changes. Close?"))return;doc
 function closeModalOutside(e){if(e.target===document.getElementById("modal-overlay"))closeModal();}
 
 // Navigation
-var pageTitles={overview:"Overview",registrations:"All Registrations",leaderboard:"Leaderboard",decisions:"Phase Decisions",columns:"Manage Columns",decisions:"Phase Decisions"};
+var pageTitles={overview:"Overview",registrations:"All Registrations",leaderboard:"Leaderboard",decisions:"Phase Decisions",columns:"Manage Columns"};
 function showPage(id){
   document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
   document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});
@@ -1142,7 +1144,7 @@ function showPage(id){
   closeSidebar();
 }
 
-function toggleTheme(){var isDark=document.documentElement.getAttribute("data-theme")==="dark";document.documentElement.setAttribute("data-theme",isDark?"light":"dark");document.getElementById("theme-btn").textContent=isDark?"&#127769;":"&#9728;";}
+function toggleTheme(){var isDark=document.documentElement.getAttribute("data-theme")==="dark";document.documentElement.setAttribute("data-theme",isDark?"light":"dark");document.getElementById("theme-btn").textContent=isDark?"🌙":"☀";}
 
 // Init
 document.addEventListener("DOMContentLoaded", async function(){
@@ -1170,7 +1172,7 @@ document.addEventListener("DOMContentLoaded", async function(){
   buildTeamChart();buildTrend();
   var lu=D.last_updated||"";
   if(lu){var el=document.getElementById("last-updated");if(el)el.textContent=lu;var sf=document.getElementById("sidebar-footer");if(sf)sf.innerHTML="Updated: "+lu+"<br>Replace data.js to refresh";}
-  if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");var tb=document.getElementById("theme-btn");if(tb)tb.textContent="&#9728;";}
+  if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");var tb=document.getElementById("theme-btn");if(tb)tb.textContent="☀";}
   buildRegNums();
   await loadGlobalTags();
   await loadCustData();
