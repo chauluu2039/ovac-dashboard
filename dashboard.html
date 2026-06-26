@@ -116,9 +116,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .sync-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 .sync-dot.syncing{background:var(--yellow);animation:pulse 1s infinite}
 .sync-dot.error{background:var(--red)}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+0%,100%{opacity:1}
+50%{opacity:.3}
 .content{padding:20px;flex:1}
-.page{display:none}.page.active{display:block}
+.page{display:none}
+.page.active{display:block}
 .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
 .metric-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px}
 .metric-val{font-size:26px;font-weight:600;line-height:1}
@@ -159,9 +161,12 @@ tbody td{padding:8px 10px;font-size:13px;vertical-align:middle}
 .col-filter-opt input{accent-color:var(--accent)}
 .col-filter-actions{padding:6px 10px;border-top:1px solid var(--border);display:flex;gap:6px}
 .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap}
-.badge-green{background:#d4edda;color:#155724}.badge-red{background:#f8d7da;color:#721c24}
-.badge-blue{background:#d1ecf1;color:#0c5460}.badge-gray{background:var(--surface2);color:var(--text2)}
-.badge-orange{background:#fff3cd;color:#856404}.badge-purple{background:#e9d5ff;color:#6b21a8}
+.badge-green{background:#d4edda;color:#155724}
+.badge-red{background:#f8d7da;color:#721c24}
+.badge-blue{background:#d1ecf1;color:#0c5460}
+.badge-gray{background:var(--surface2);color:var(--text2)}
+.badge-orange{background:#fff3cd;color:#856404}
+.badge-purple{background:#e9d5ff;color:#6b21a8}
 .badge-yellow{background:#fef9c3;color:#854d0e}
 .thin-badge{background:#fff3cd;color:#856404;border:1px solid #ffc107;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:600}
 .tag-pill{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap;margin:1px}
@@ -233,7 +238,8 @@ tbody td{padding:8px 10px;font-size:13px;vertical-align:middle}
 .info-card p{font-size:13px;color:var(--text2);line-height:1.6}
 .info-card .step{display:flex;gap:10px;margin-top:10px;font-size:12px;color:var(--text2)}
 .info-card .step-num{width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
-.btn-green{background:var(--green);color:#fff}.btn-red{background:var(--red);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn-red{background:var(--red);color:#fff}
 .footnote{padding:12px 20px;font-size:11px;color:var(--text3);border-top:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .col-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;max-height:280px;overflow-y:auto}
 .col-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)}
@@ -242,19 +248,14 @@ tbody td{padding:8px 10px;font-size:13px;vertical-align:middle}
 .col-add-form{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:end}
 .col-add-form input,.col-add-form select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--surface);color:var(--text)}
 .lb-rank{font-size:18px;font-weight:700;width:36px;text-align:center}
-.lb-rank.gold{color:#f59e0b}.lb-rank.silver{color:#94a3b8}.lb-rank.bronze{color:#b45309}
-.score-bar{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;flex:1}
-.score-bar-fill{height:100%;background:linear-gradient(90deg,#e05a1e,#f47340);border-radius:4px;transition:width .5s}
-::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
-@media(max-width:768px){
-  .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
-  .sidebar-close{display:block}.sidebar-overlay.open{display:block}
-  .main{margin-left:0}.hamburger{display:flex}
-  .metrics-grid{grid-template-columns:1fr 1fr}.charts-grid{grid-template-columns:1fr}
-  .modal-body{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr}
-  .topbar-right input{width:120px}.content{padding:14px}
-}
-@media(max-width:480px){.metrics-grid{grid-template-columns:1fr}.topbar-right input{display:none}}
+.lb-rank.gold{color:#f59e0b}
+.lb-rank.silver{color:#94a3b8}
+.lb-rank.bronze{color:#b45309}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
+.sidebar.open{transform:translateX(0)}
+.sidebar-overlay.open{display:block}
 </style></head><body>
 <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
 <div class="layout">
@@ -351,13 +352,7 @@ tbody td{padding:8px 10px;font-size:13px;vertical-align:middle}
           </div>
         </div>
       </div>
-      <div class="page" id="page-advanced">
-        <div class="info-strip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Registrations tagged with Advanced, Shortlisted, or Winner tags.</div>
-        <div class="table-card">
-          <div class="table-toolbar"><span class="filter-count" id="advanced-count">None yet</span><button class="btn btn-secondary" style="margin-left:auto" onclick="exportCSV()" id="adv-export">Export CSV</button></div>
-          <table><thead><tr><th>#</th><th>Project</th><th>Type</th><th>Tags</th><th style="text-align:center">Weighted Avg</th><th>Judge Notes</th></tr></thead><tbody id="advanced-tbody"></tbody></table>
-        </div>
-      </div>
+      
 
       <div class="page" id="page-decisions">
         <div class="phase-bar">
@@ -560,7 +555,7 @@ function buildNav(){
     {id:"overview",icon:"<rect x='3' y='3' width='7' height='7'/><rect x='14' y='3' width='7' height='7'/><rect x='3' y='14' width='7' height='7'/><rect x='14' y='14' width='7' height='7'/>",label:"Overview",roles:["admin","judge"]},
     {id:"registrations",icon:"<path d='M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z'/><polyline points='17 3 17 8 12 8'/>",label:"All Registrations",roles:["admin","judge"]},
     {id:"leaderboard",icon:"<polyline points='22 12 18 12 15 21 9 3 6 12 2 12'/>",label:"Leaderboard",badge:"lb-badge",roles:["admin","judge"]},
-    {id:"advanced",icon:"<path d='M22 11.08V12a10 10 0 11-5.93-9.14'/><polyline points='22 4 12 14.01 9 11.01'/>",label:"Advanced",badge:"advanced-badge",roles:["admin","judge"]},
+    
     {id:"columns",icon:"<line x1='8' y1='6' x2='21' y2='6'/><line x1='8' y1='12' x2='21' y2='12'/><line x1='8' y1='18' x2='21' y2='18'/><line x1='3' y1='6' x2='3.01' y2='6'/><line x1='3' y1='12' x2='3.01' y2='12'/><line x1='3' y1='18' x2='3.01' y2='18'/>",label:"Manage Columns",roles:["admin"]},
   ];
   nav.innerHTML=items.filter(function(i){return i.roles.includes(ROLE);}).map(function(item){
@@ -707,7 +702,7 @@ async function saveAll(){
   isDirty=false;
   document.getElementById("modal-dirty").style.display="none";
   setSyncStatus(ok?"ok":"error");
-  renderRegs();renderAdv();updateAdvBadge();
+  renderRegs();
   renderAllScores(r.email);
   if(!ok) alert("Some changes failed to save. Check console.");
 }
@@ -850,7 +845,7 @@ async function massBulkTag(add){
       custData[r.email]={tags:tags,judge_notes:c.judge_notes||"",custom_cols:cols,notes:c.notes||""};
     }catch(e){errors++;console.error(e);}
   }
-  setSyncStatus(errors>0?"error":"ok");renderRegs();renderAdv();updateAdvBadge();
+  setSyncStatus(errors>0?"error":"ok");renderRegs();
   document.getElementById("bulk-tag-val").value="";
   if(errors>0)alert(errors+" rows failed.");
 }
@@ -1019,37 +1014,10 @@ function loadLeaderboard(){
 }
 
 // Advanced
-function isAdvanced(r){var c=getCust(r.email);var tags=c.tags||[];return globalTags.some(function(t){return tags.includes(t.col_key)&&(t.col_label.toLowerCase().indexOf("advanced")!==-1||t.col_label.toLowerCase().indexOf("winner")!==-1||t.col_label.toLowerCase().indexOf("shortlist")!==-1||t.col_label.toLowerCase().indexOf("finalist")!==-1);});}
-function updateAdvBadge(){var adv=DATA.registrations.filter(isAdvanced);var el=document.getElementById("advanced-badge");if(el)el.textContent=adv.length;return adv;}
-function renderAdv(){
-  var adv=updateAdvBadge();
-  var el=document.getElementById("advanced-count");if(el)el.textContent=adv.length?adv.length+" registrant"+(adv.length>1?"s":"")+" advanced":"None yet";
-  var tbody=document.getElementById("advanced-tbody");if(!tbody)return;
-  tbody.innerHTML=adv.map(function(r,i){
-    var c=getCust(r.email);var avg=getAvgScore(r.email);
-    // Collect all judge notes
-    var allNotes=[];
-    var js=judgeScores[r.email]||{};
-    Object.entries(js).forEach(function(kv){if(kv[1].notes)allNotes.push(kv[0].split(" ")[0]+": "+kv[1].notes);});
-    return "<tr onclick=\"openModal('"+r.id+"')\">"
-      +"<td style=\"color:var(--text3)\">"+i+1+"</td>"
-      +"<td><strong>"+esc(r.project_name||r.luma_team||r.luma_name)+"</strong><br><span style=\"font-size:11px;color:var(--text3)\">"+esc(r.luma_name)+"</span></td>"
-      +"<td><span class=\"badge "+(r.final_type==="Team"?"badge-blue":"badge-gray")+"\">"+esc(r.final_type||"")+"</span></td>"
-      +"<td>"+renderTagPills(c.tags||[])+"</td>"
-      +"<td style=\"text-align:center\"><strong style=\"color:"+scoreColor(avg)+";font-size:16px\">"+( avg!=null?avg.toFixed(1):"&#8212;")+"</strong></td>"
-      +"<td style=\"font-size:11px;color:var(--text3)\">"+esc(allNotes.join(" | "))+"</td>"
-      +"</tr>";
-  }).join("");
-}
+);}
 
-function exportCSV(){
-  var adv=DATA.registrations.filter(isAdvanced);
-  var lines=["Project,Name,Type,Members,Tags,Avg Score,Judge Notes"].concat(adv.map(function(r){var c=getCust(r.email);var avg=getAvgScore(r.email);var js=judgeScores[r.email]||{};var notes=Object.entries(js).filter(function(kv){return kv[1].notes;}).map(function(kv){return kv[0].split(" ")[0]+": "+kv[1].notes;}).join("; ");return "\""+esc(r.project_name||r.luma_team||r.luma_name)+"\"," +"\""+esc(r.luma_name)+"\"," +"\""+esc(r.final_type||"")+"\"," +(r.luma_members||"")+",\""+((c.tags||[]).map(tagLabel).join("; "))+"\"," +(avg!=null?avg.toFixed(1):"")+" ,\""+esc(notes)+"\"" ;}));
-  var blob=new Blob([lines.join("\n")],{type:"text/csv"});
-  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="OVAC_Advanced.csv";a.click();
-}
 
-// All scores table in modal
+
 function renderAllScores(email){
   var tbody=document.getElementById("all-scores-body");if(!tbody)return;
   var js=judgeScores[email]||{};
